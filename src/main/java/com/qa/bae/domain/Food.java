@@ -24,7 +24,6 @@ public class Food {
 
 	public Food() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public Food(String name, String allergens, String description) {
@@ -60,7 +59,7 @@ public class Food {
 
 	@Override
 	public String toString() {
-		return "[Food id = " + id + ", name = " + name + ", allergens = " + allergens + ", description = " + description
+		return "Food [id = " + id + ", name = " + name + ", allergens = " + allergens + ", description = " + description
 				+ ", wines = " + wines + "]";
 	}
 
