@@ -13,8 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.qa.bae.domain.Food;
 import com.qa.bae.service.FoodService;
 
-
-
 @RestController
 @RequestMapping("/winepairingapp")
 public class FoodController {
@@ -39,6 +37,4 @@ public class FoodController {
 	public String deleteFood(@PathVariable(value = "id") Long id) {
 		return foodService.deleteFood(id);
 	}
-	
-
 }
