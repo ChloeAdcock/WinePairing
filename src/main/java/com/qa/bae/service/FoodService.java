@@ -1,5 +1,5 @@
 package com.qa.bae.service;
 
-public class Service {
+public class FoodService {
 
 }
