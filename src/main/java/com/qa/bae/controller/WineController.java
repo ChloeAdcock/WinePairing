@@ -37,5 +37,4 @@ public class WineController {
 	public String deleteWine(@PathVariable(value = "id") Long id) {
 		return wineService.deleteWine(id);
 	}
-
 }
