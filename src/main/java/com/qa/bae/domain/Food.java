@@ -22,7 +22,7 @@ public class Food {
 	private String name;
 	private String allergens;
 	private String description;
-	private String likes;
+	private int likes;
 	
 	@ManyToMany(mappedBy = "foodPairing")
 	private Set<Wine> winePairing;
@@ -31,7 +31,7 @@ public class Food {
 		super();
 	}
 
-	public Food(String name, String allergens, String description, String likes) {
+	public Food(String name, String allergens, String description, int likes) {
 		super();
 		this.name = name;
 		this.allergens = allergens;
@@ -39,6 +39,14 @@ public class Food {
 		this.likes = likes;
 	}
 
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -63,11 +71,11 @@ public class Food {
 		this.description = description;
 	}
 
-	public String getLikes() {
+	public int getLikes() {
 		return likes;
 	}
 
-	public void setLikes(String likes) {
+	public void setLikes(int likes) {
 		this.likes = likes;
 	}
 
@@ -84,7 +92,7 @@ public class Food {
 		result = prime * result + ((allergens == null) ? 0 : allergens.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((likes == null) ? 0 : likes.hashCode());
+		result = prime * result + likes;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((winePairing == null) ? 0 : winePairing.hashCode());
 		return result;
@@ -114,10 +122,7 @@ public class Food {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (likes == null) {
-			if (other.likes != null)
-				return false;
-		} else if (!likes.equals(other.likes))
+		if (likes != other.likes)
 			return false;
 		if (name == null) {
 			if (other.name != null)
@@ -130,5 +135,5 @@ public class Food {
 		} else if (!winePairing.equals(other.winePairing))
 			return false;
 		return true;
-	}	
+	}
 }

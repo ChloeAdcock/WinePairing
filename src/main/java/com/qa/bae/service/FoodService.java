@@ -17,16 +17,8 @@ public class FoodService {
 	}
 	
 	public List<Food> getAllFood() {
-		if (foodRepo.findAll().isEmpty()) {
-			setUpFoods();
-		}
 		return foodRepo.findAll();
 	}
-	
-	private void setUpFoods() {
-		Food food = new Food();
-		foodRepo.save(food);
-		}
 	
 	public Food addNewFood(Food food) {
 		return foodRepo.save(food);
@@ -37,3 +29,4 @@ public class FoodService {
 		return "Food succesfully deleted";
 	}
 }
+
