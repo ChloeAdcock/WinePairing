@@ -2,35 +2,41 @@ package com.qa.bae.domain;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name = "food")
 public class Food {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "food_id")
 	private Long id;
 	
 	private String name;
 	private String allergens;
 	private String description;
+	private String likes;
 	
-	@OneToMany(mappedBy = "Food")
-	private Set<Wine> wines;
+	@ManyToMany(mappedBy = "foodPairing")
+	private Set<Wine> winePairing;
 
 	public Food() {
 		super();
 	}
 
-	public Food(String name, String allergens, String description) {
+	public Food(String name, String allergens, String description, String likes) {
 		super();
 		this.name = name;
 		this.allergens = allergens;
 		this.description = description;
+		this.likes = likes;
 	}
 
 	public String getName() {
@@ -57,10 +63,18 @@ public class Food {
 		this.description = description;
 	}
 
+	public String getLikes() {
+		return likes;
+	}
+
+	public void setLikes(String likes) {
+		this.likes = likes;
+	}
+
 	@Override
 	public String toString() {
 		return "Food [id=" + id + ", name=" + name + ", allergens=" + allergens + ", description=" + description
-				+ ", wines=" + wines + "]";
+				+ ", likes=" + likes + ", winePairing=" + winePairing + "]";
 	}
 
 	@Override
@@ -70,8 +84,9 @@ public class Food {
 		result = prime * result + ((allergens == null) ? 0 : allergens.hashCode());
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((likes == null) ? 0 : likes.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((wines == null) ? 0 : wines.hashCode());
+		result = prime * result + ((winePairing == null) ? 0 : winePairing.hashCode());
 		return result;
 	}
 
@@ -99,18 +114,21 @@ public class Food {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (likes == null) {
+			if (other.likes != null)
+				return false;
+		} else if (!likes.equals(other.likes))
+			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (wines == null) {
-			if (other.wines != null)
+		if (winePairing == null) {
+			if (other.winePairing != null)
 				return false;
-		} else if (!wines.equals(other.wines))
+		} else if (!winePairing.equals(other.winePairing))
 			return false;
 		return true;
-	}
-	
-	
+	}	
 }
