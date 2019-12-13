@@ -25,7 +25,7 @@ public class Wine {
 	private String grape;
 	private String description;
 	private String tastingNotes;
-	private String likes;
+	private int likes;
 	
 	@ManyToMany
 	@JoinTable(
@@ -38,13 +38,21 @@ public class Wine {
 		super();
 	}
 
-	public Wine(String name, String grape, String description, String tastingNotes, String likes) {
+	public Wine(String name, String grape, String description, String tastingNotes, int likes) {
 		super();
 		this.name = name;
 		this.grape = grape;
 		this.description = description;
 		this.tastingNotes = tastingNotes;
 		this.likes = likes;
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -79,11 +87,11 @@ public class Wine {
 		this.tastingNotes = tastingNotes;
 	}
 
-	public String getLikes() {
+	public int getLikes() {
 		return likes;
 	}
 
-	public void setLikes(String likes) {
+	public void setLikes(int likes) {
 		this.likes = likes;
 	}
 
@@ -101,7 +109,7 @@ public class Wine {
 		result = prime * result + ((foodPairing == null) ? 0 : foodPairing.hashCode());
 		result = prime * result + ((grape == null) ? 0 : grape.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((likes == null) ? 0 : likes.hashCode());
+		result = prime * result + likes;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result + ((tastingNotes == null) ? 0 : tastingNotes.hashCode());
 		return result;
@@ -136,10 +144,7 @@ public class Wine {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (likes == null) {
-			if (other.likes != null)
-				return false;
-		} else if (!likes.equals(other.likes))
+		if (likes != other.likes)
 			return false;
 		if (name == null) {
 			if (other.name != null)
