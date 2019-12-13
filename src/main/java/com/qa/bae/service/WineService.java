@@ -17,16 +17,8 @@ public class WineService {
 	}
 	
 	public List<Wine> getAllWine() {
-		if (wineRepo.findAll().isEmpty()) {
-			setUpWines();
-		}
 		return wineRepo.findAll();
 	}
-	
-	private void setUpWines() {
-		Wine wine = new Wine();
-		wineRepo.save(wine);
-		}
 	
 	public Wine addNewWine(Wine wine) {
 		return wineRepo.save(wine);
