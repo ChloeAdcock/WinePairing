@@ -3,8 +3,6 @@ package com.qa.bae.service;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.qa.bae.domain.User;
 import com.qa.bae.repo.UserRepository;
@@ -31,6 +29,10 @@ public class UserService {
 		}
 	
 	public User addNewUser(User user) {
+		return userRepo.save(user);
+	}
+	
+	public User updateUser(User user) {
 		return userRepo.save(user);
 	}
 	
