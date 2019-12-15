@@ -56,7 +56,7 @@ public class WineServiceUnitTest {
 	}
 	
 	@Test
-	public void deleteWineTest() {
+	public void deleteWineTest() throws WineNotFoundException {
 		when(this.repo.existsById(id)).thenReturn(true, false);
 
 		this.service.deleteWine(id);

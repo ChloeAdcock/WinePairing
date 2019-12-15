@@ -56,7 +56,7 @@ public class FoodServiceUnitTest {
 	}
 	
 	@Test
-	public void deleteFoodTest() {
+	public void deleteFoodTest() throws FoodNotFoundException {
 		when(this.repo.existsById(id)).thenReturn(true, false);
 
 		this.service.deleteFood(id);

@@ -2,15 +2,19 @@ package com.qa.bae.controller;
 
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.bae.domain.Food;
+import com.qa.bae.service.FoodNotFoundException;
 import com.qa.bae.service.FoodService;
 
 @RestController
@@ -20,6 +24,7 @@ public class FoodController {
 	private FoodService foodService;
 	
 	public FoodController(FoodService foodService) {
+		super();
 		this.foodService = foodService;
 	}
 	
@@ -33,8 +38,18 @@ public class FoodController {
 		return foodService.addNewFood(food);
 	}
 	
-	@DeleteMapping("/food/{id}")
-	public String deleteFood(@PathVariable(value = "id") Long id) {
-		return foodService.deleteFood(id);
+	@DeleteMapping("/deleteFood/{id}")
+	public void deleteFood(@PathVariable Long id) throws FoodNotFoundException {
+		this.foodService.deleteFood(id);
+	}
+
+	@GetMapping("/getFood/{id}")
+	public Food getFood(@PathVariable Long id) throws FoodNotFoundException {
+		return this.foodService.findFoodByID(id);
+	}
+	
+	@PutMapping("/updateFood")
+	public Food updateFood(@PathParam("id") Long id, @RequestBody Food food) throws FoodNotFoundException {
+		return this.foodService.updateFood(food, id);
 	}
 }
