@@ -24,8 +24,26 @@ public class WineService {
 		return wineRepo.save(wine);
 	}
 	
-	public String deleteWine(Long id) {
-		wineRepo.deleteById(id);
-		return "Wine succesfully deleted";
+	public boolean deleteWine(Long id) throws WineNotFoundException {
+		if (!this.wineRepo.existsById(id)) {
+			throw new WineNotFoundException();
+		}
+		this.wineRepo.deleteById(id);
+		return this.wineRepo.existsById(id);
+	}
+	
+	public Wine findWineById(Long id) throws WineNotFoundException {
+		return this.wineRepo.findById(id).orElseThrow(
+				() -> new WineNotFoundException());
+	}
+	
+	public Wine updateWine(Wine wine, Long id) throws WineNotFoundException {
+		Wine toUpdate = findWineById(id);
+		toUpdate.setName(wine.getName());
+		toUpdate.setGrape(wine.getGrape());
+		toUpdate.setDescription(wine.getDescription());
+		toUpdate.setTastingNotes(wine.getTastingNotes());		
+		toUpdate.setLikes(wine.getLikes());
+		return this.wineRepo.save(toUpdate);
 	}
 }
