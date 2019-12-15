@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -38,6 +39,7 @@ public class WineServiceUnitTest {
 	
 	@Before
 	public void start() {
+		
 		this.wineList = new ArrayList<>();
 		this.wineList.add(testWine);
 		this.testWine = new Wine("test name", "test grape", "test description", "test tasting", 1);
@@ -48,6 +50,7 @@ public class WineServiceUnitTest {
 	
 	@Test
 	public void createWineTest() {
+		
 		when(this.repo.save(testWine)).thenReturn(testWineWithId);
 
 		assertEquals(this.testWineWithId, this.service.addNewWine(testWine));
@@ -73,4 +76,32 @@ public class WineServiceUnitTest {
 
 		verify(repo, times(1)).findAll();
 	}
+	
+	@Test
+	public void findWineByIDTest() throws WineNotFoundException {
+		
+		when(this.repo.findById(this.id)).thenReturn(Optional.of(this.testWineWithId));
+
+		assertEquals(this.testWineWithId, this.service.findWineById(this.id));
+
+		verify(this.repo, times(1)).findById(this.id);
+	}
+	
+	@Test
+	public void updateWineTest() throws WineNotFoundException {
+	
+		Wine newWine = new Wine("Wine Name", "Grape", "Description", "Teasting notes", 2);
+		Wine updatedWine = new Wine(newWine.getName(), newWine.getGrape(), newWine.getDescription(), 
+				newWine.getTastingNotes(), newWine.getLikes());
+		updatedWine.setId(this.id);
+
+		when(this.repo.findById(this.id)).thenReturn(Optional.of(this.testWineWithId));
+		when(this.repo.save(updatedWine)).thenReturn(updatedWine);
+
+		assertEquals(updatedWine, this.service.updateWine(newWine, this.id));
+
+		verify(this.repo, times(1)).findById(1L);
+		verify(this.repo, times(1)).save(updatedWine);
+	}
 }
+

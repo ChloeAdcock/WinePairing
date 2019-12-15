@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -72,5 +73,14 @@ public class FoodServiceUnitTest {
 		assertFalse("Controller has found no foods", this.service.getAllFood().isEmpty());
 
 		verify(repo, times(1)).findAll();
+	}
+	
+	@Test
+	public void findFoodByIDTest() throws FoodNotFoundException {
+		when(this.repo.findById(this.id)).thenReturn(Optional.of(this.testFoodWithId));
+
+		assertEquals(this.testFoodWithId, this.service.findFoodByID(this.id));
+
+		verify(this.repo, times(1)).findById(this.id);
 	}
 }
