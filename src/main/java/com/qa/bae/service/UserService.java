@@ -1,7 +1,5 @@
 package com.qa.bae.service;
 
-import java.util.List;
-
 import org.springframework.stereotype.Service;
 
 import com.qa.bae.domain.User;
@@ -16,28 +14,20 @@ public class UserService {
 		this.userRepo = userRepo;
 	}
 	
-	public List<User> getAllUsers() {
-		if (userRepo.findAll().isEmpty()) {
-			setUpUsers();
-		}
-		return userRepo.findAll();
-	}
-	
-	private void setUpUsers() {
-		User user = new User();
-		userRepo.save(user);
-		}
-	
 	public User addNewUser(User user) {
 		return userRepo.save(user);
 	}
 	
-	public User updateUser(User user) {
-		return userRepo.save(user);
+	public boolean deleteUser(Long id) throws UserNotFoundException {
+		if (!this.userRepo.existsById(id)) {
+			throw new UserNotFoundException();
+		}
+		this.userRepo.deleteById(id);
+		return this.userRepo.existsById(id);
 	}
 	
-	public String deleteUser(Long id) {
-		userRepo.deleteById(id);
-		return "User succesfully deleted";
+	public User findUserByID(Long id) throws UserNotFoundException {
+		return this.userRepo.findById(id).orElseThrow(
+				() -> new UserNotFoundException());
 	}
 }
