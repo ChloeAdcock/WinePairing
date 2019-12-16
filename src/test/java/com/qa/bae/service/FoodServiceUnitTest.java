@@ -18,7 +18,6 @@ import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qa.bae.domain.Food;
-import com.qa.bae.domain.Wine;
 import com.qa.bae.repo.FoodRepository;
 
 @RunWith(SpringRunner.class)
