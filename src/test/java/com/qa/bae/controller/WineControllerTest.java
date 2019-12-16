@@ -69,7 +69,7 @@ public class WineControllerTest {
 
 		when(service.getAllWine()).thenReturn(this.wineList);
 
-		assertFalse("Controller has found no ducks", this.controller.getAllWines().isEmpty());
+		assertFalse("Controller has found no wines", this.controller.getAllWines().isEmpty());
 
 		verify(service, times(1)).getAllWine();
 	}
