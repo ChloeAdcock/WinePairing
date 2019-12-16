@@ -21,7 +21,7 @@ import com.qa.bae.service.WineNotFoundException;
 import com.qa.bae.service.WineService;
 
 @RunWith(SpringRunner.class)
-public class WineControllerTest {
+public class WineControllerUnitTest {
 
 	@InjectMocks
 	private WineController controller;
