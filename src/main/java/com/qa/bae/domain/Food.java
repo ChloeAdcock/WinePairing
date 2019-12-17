@@ -1,13 +1,12 @@
 package com.qa.bae.domain;
 
-import java.util.Set;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -24,8 +23,9 @@ public class Food {
 	private String description;
 	private int likes;
 	
-	@ManyToMany(mappedBy = "foodPairing")
-	private Set<Wine> winePairing;
+    @ManyToOne
+    @JoinColumn(name="wine_id", nullable=false)
+    private Wine wine;
 
 	public Food() {
 		super();
@@ -82,7 +82,7 @@ public class Food {
 	@Override
 	public String toString() {
 		return "Food [id=" + id + ", name=" + name + ", allergens=" + allergens + ", description=" + description
-				+ ", likes=" + likes + ", winePairing=" + winePairing + "]";
+				+ ", likes=" + likes + ", wine=" + wine + "]";
 	}
 
 	@Override
@@ -94,7 +94,7 @@ public class Food {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + likes;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((winePairing == null) ? 0 : winePairing.hashCode());
+		result = prime * result + ((wine == null) ? 0 : wine.hashCode());
 		return result;
 	}
 
@@ -129,10 +129,10 @@ public class Food {
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (winePairing == null) {
-			if (other.winePairing != null)
+		if (wine == null) {
+			if (other.wine != null)
 				return false;
-		} else if (!winePairing.equals(other.winePairing))
+		} else if (!wine.equals(other.wine))
 			return false;
 		return true;
 	}

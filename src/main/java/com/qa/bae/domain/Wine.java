@@ -7,9 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -27,12 +25,8 @@ public class Wine {
 	private String tastingNotes;
 	private int likes;
 	
-	@ManyToMany
-	@JoinTable(
-			name = "foods_and_wines",
-	        joinColumns = @JoinColumn(name = "food_id"),
-	        inverseJoinColumns = @JoinColumn(name = "wine_id"))
-	Set <Food> foodPairing;
+    @OneToMany(mappedBy="wine")
+    private Set<Food> food;;
 
 	public Wine() {
 		super();
@@ -98,7 +92,7 @@ public class Wine {
 	@Override
 	public String toString() {
 		return "Wine [id=" + id + ", name=" + name + ", grape=" + grape + ", description=" + description
-				+ ", tastingNotes=" + tastingNotes + ", likes=" + likes + ", foodPairing=" + foodPairing + "]";
+				+ ", tastingNotes=" + tastingNotes + ", likes=" + likes + ", foods=" + food + "]";
 	}
 
 	@Override
@@ -106,7 +100,7 @@ public class Wine {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((foodPairing == null) ? 0 : foodPairing.hashCode());
+		result = prime * result + ((food == null) ? 0 : food.hashCode());
 		result = prime * result + ((grape == null) ? 0 : grape.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + likes;
@@ -129,10 +123,10 @@ public class Wine {
 				return false;
 		} else if (!description.equals(other.description))
 			return false;
-		if (foodPairing == null) {
-			if (other.foodPairing != null)
+		if (food == null) {
+			if (other.food != null)
 				return false;
-		} else if (!foodPairing.equals(other.foodPairing))
+		} else if (!food.equals(other.food))
 			return false;
 		if (grape == null) {
 			if (other.grape != null)
