@@ -14,23 +14,30 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @Entity
-@Table(name = "wine")
 @ToString
-@EqualsAndHashCode
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Table(name = "wine")
 public class Wine {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "wine_id")
+	@EqualsAndHashCode.Include
 	private Long id;
 	
+	@EqualsAndHashCode.Include
 	private String name;
+	@EqualsAndHashCode.Include
 	private String grape;
+	@EqualsAndHashCode.Include
 	private String description;
+	@EqualsAndHashCode.Include
 	private String tastingNotes;
+	@EqualsAndHashCode.Include
 	private int likes;
 	
     @OneToMany(mappedBy="wine")
+    @EqualsAndHashCode.Include
     private Set<Food> food;
     
 	public Wine() {
@@ -93,4 +100,8 @@ public class Wine {
 	public void setLikes(int likes) {
 		this.likes = likes;
 	}
+
+	
+
+
 }
