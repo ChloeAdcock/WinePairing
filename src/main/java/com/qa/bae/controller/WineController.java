@@ -23,6 +23,11 @@ public class WineController {
 	
 	private WineService wineService;
 	
+	public WineController(WineService wineService) {
+		super();
+		this.wineService = wineService;
+	}
+
 	@GetMapping("/wine")
 	public List<Wine> getAllWines() {
 		return wineService.getAllWine();
@@ -30,7 +35,7 @@ public class WineController {
 	
 	@PostMapping("/wine")
 	public Wine addNewWine(@RequestBody Wine wine) {
-		return wineService.addNewWine(wine);
+		return this.wineService.addNewWine(wine);
 	}
 	
 	@DeleteMapping("/deleteWine/{id}")

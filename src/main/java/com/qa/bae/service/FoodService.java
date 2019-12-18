@@ -13,6 +13,7 @@ public class FoodService {
 	private FoodRepository foodRepo;
 
 	public FoodService(FoodRepository foodRepo) {
+		super();
 		this.foodRepo = foodRepo;
 	}
 	
