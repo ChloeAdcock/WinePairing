@@ -17,7 +17,7 @@ import com.qa.bae.service.UserService;
 public class UserController {
 	
 	private UserService userService;
-	
+
 	public UserController(UserService userService) {
 		super();
 		this.userService = userService;

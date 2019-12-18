@@ -11,6 +11,7 @@ public class UserService {
 	private UserRepository userRepo;
 	
 	public UserService(UserRepository userRepo) {
+		super();
 		this.userRepo = userRepo;
 	}
 	

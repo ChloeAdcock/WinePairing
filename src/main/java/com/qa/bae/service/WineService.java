@@ -13,6 +13,7 @@ public class WineService {
 	private WineRepository wineRepo;
 
 	public WineService(WineRepository wineRepo) {
+		super();
 		this.wineRepo = wineRepo;
 	}
 	
