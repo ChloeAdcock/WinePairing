@@ -14,13 +14,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
-import com.qa.bae.domain.Food;
 import com.qa.bae.domain.User;
 import com.qa.bae.repo.UserRepository;
 
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class UserServiceUnitTest {
 	
 	@InjectMocks

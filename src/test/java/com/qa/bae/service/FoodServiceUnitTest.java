@@ -15,12 +15,12 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import com.qa.bae.domain.Food;
 import com.qa.bae.repo.FoodRepository;
 
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class FoodServiceUnitTest {
 
 	@InjectMocks
@@ -88,16 +88,14 @@ public class FoodServiceUnitTest {
 	public void updateFoodTest() throws FoodNotFoundException {
 	
 		Food newFood = new Food("Food Name", "Allergens", "Description", 2);
-		Food updatedFood = new Food(newFood.getName(), newFood.getAllergens(), newFood.getDescription(), 
-				newFood.getLikes());
-		updatedFood.setId(this.id);
+		newFood.setId(this.id);
 
-		when(this.repo.findById(this.id)).thenReturn(Optional.of(this.testFoodWithId));
-		when(this.repo.save(updatedFood)).thenReturn(updatedFood);
+		when(this.repo.findById(this.id)).thenReturn(Optional.of(newFood));
+		when(this.repo.save(newFood)).thenReturn(newFood);
 
-		assertEquals(updatedFood, this.service.updateFood(newFood, this.id));
+		assertEquals(newFood, this.service.updateFood(newFood, this.id));
 
 		verify(this.repo, times(1)).findById(1L);
-		verify(this.repo, times(1)).save(updatedFood);
+		verify(this.repo, times(1)).save(newFood);
 	}
 }

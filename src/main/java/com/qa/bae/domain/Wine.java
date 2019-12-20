@@ -11,33 +11,23 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
 @Entity
-@ToString
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@EqualsAndHashCode
 @Table(name = "wine")
 public class Wine {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "wine_id")
-	@EqualsAndHashCode.Include
 	private Long id;
-	
-	@EqualsAndHashCode.Include
 	private String name;
-	@EqualsAndHashCode.Include
 	private String grape;
-	@EqualsAndHashCode.Include
 	private String description;
-	@EqualsAndHashCode.Include
 	private String tastingNotes;
-	@EqualsAndHashCode.Include
 	private int likes;
 	
     @OneToMany(mappedBy="wine")
-    @EqualsAndHashCode.Include
     private Set<Food> food;
     
 	public Wine() {
@@ -101,7 +91,9 @@ public class Wine {
 		this.likes = likes;
 	}
 
-	
-
-
+	@Override
+	public String toString() {
+		return "Wine [id=" + id + ", name=" + name + ", grape=" + grape + ", description=" + description
+				+ ", tastingNotes=" + tastingNotes + ", likes=" + likes + ", food=" + food + "]";
+	}
 }

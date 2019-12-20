@@ -15,12 +15,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.springframework.test.context.junit4.SpringRunner;
-
+import org.mockito.junit.MockitoJUnitRunner;
 import com.qa.bae.domain.Wine;
 import com.qa.bae.repo.WineRepository;
 
-@RunWith(SpringRunner.class)
+@RunWith(MockitoJUnitRunner.class)
 public class WineServiceUnitTest {
 	
 	@InjectMocks
@@ -91,17 +90,15 @@ public class WineServiceUnitTest {
 	public void updateWineTest() throws WineNotFoundException {
 	
 		Wine newWine = new Wine("Wine Name", "Grape", "Description", "Teasting notes", 2);
-		Wine updatedWine = new Wine(newWine.getName(), newWine.getGrape(), newWine.getDescription(), 
-				newWine.getTastingNotes(), newWine.getLikes());
-		updatedWine.setId(this.id);
+		newWine.setId(this.id);
 
-		when(this.repo.findById(this.id)).thenReturn(Optional.of(this.testWineWithId));
-		when(this.repo.save(updatedWine)).thenReturn(updatedWine);
+		when(this.repo.findById(this.id)).thenReturn(Optional.of(newWine));
+		when(this.repo.save(newWine)).thenReturn(newWine);
 
-		assertEquals(updatedWine, this.service.updateWine(newWine, this.id));
+		assertEquals(newWine, this.service.updateWine(newWine, this.id));
 
 		verify(this.repo, times(1)).findById(1L);
-		verify(this.repo, times(1)).save(updatedWine);
+		verify(this.repo, times(1)).save(newWine);
 	}
 }
 
