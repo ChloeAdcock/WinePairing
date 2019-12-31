@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -22,7 +23,8 @@ public class Wine {
 	private String tastingNotes;
 	private int likes;
 	
-    @OneToMany(mappedBy="wine")
+    @OneToMany
+    @JoinColumn(name="food_id")
     private Set<Food> food;
     
 	public Wine() {
