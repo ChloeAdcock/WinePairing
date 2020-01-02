@@ -22,11 +22,11 @@ public class Food {
 	private String allergens;
 	private String description;
 	private int likes;
-	
-	@ManyToOne
-    @JoinColumn(name = "wine_id", insertable = false, updatable = false)
-    private Wine wine;
 
+	@ManyToOne
+    @JoinColumn(name="wine_id", nullable=true)
+    private Wine wine;
+	
 	public Food(String name, String allergens, String description, int likes) {
 		super();
 		this.name = name;
@@ -109,24 +109,28 @@ public class Food {
 		if (allergens == null) {
 			if (other.allergens != null)
 				return false;
-		} else if (!allergens.equals(other.allergens))
+		} 
+		else if (!allergens.equals(other.allergens))
 			return false;
 		if (description == null) {
 			if (other.description != null)
 				return false;
-		} else if (!description.equals(other.description))
+		} 
+		else if (!description.equals(other.description))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} else if (!id.equals(other.id))
+		} 
+		else if (!id.equals(other.id))
 			return false;
 		if (likes != other.likes)
 			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} 
+		else if (!name.equals(other.name))
 			return false;
 		return true;
 	}
