@@ -25,9 +25,9 @@ public class UserController {
 	
 	@PostMapping("/user")
 	public User addNewUser(@RequestBody User user) {
-		return userService.addNewUser(user);
+		return this.userService.addNewUser(user);
 	}
-	
+
 	@DeleteMapping("/deleteUser/{id}")
 	public void deleteUser(@PathVariable Long id) throws UserNotFoundException {
 		this.userService.deleteUser(id);
@@ -37,4 +37,5 @@ public class UserController {
 	public User getUser(@PathVariable Long id) throws UserNotFoundException {
 		return this.userService.findUserByID(id);
 	}
+	
 }
