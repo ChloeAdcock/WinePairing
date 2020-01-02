@@ -27,33 +27,33 @@ public class FoodServiceIntergrationTest {
 	
 	private Food testFood;
 	
-	private Food testFoodWithId;
+	private Food testFoodWithID;
 	
 	@Before
 	public void init() {
 		this.testFood = new Food("Test name", "Test allergens", "Test description", 1);
 		this.foodRepo.deleteAll();
-		this.testFoodWithId = this.foodRepo.save(this.testFood);
+		this.testFoodWithID = this.foodRepo.save(this.testFood);
 	}
 	
 	@Test
 	public void testGetAllFoods() {
-		assertThat(this.foodService.getAllFood()).isEqualTo(Arrays.asList(new Food[] { this.testFoodWithId }));
+		assertThat(this.foodService.getAllFood()).isEqualTo(Arrays.asList(new Food[] { this.testFoodWithID }));
 	}
 	
 	@Test
 	public void testAddNewFoods() {
-		assertEquals(this.testFoodWithId, this.foodService.addNewFood(testFood));
+		assertEquals(this.testFoodWithID, this.foodService.addNewFood(testFood));
 	}
 	
 	@Test
 	public void testDeleteFood() throws FoodNotFoundException {
-		assertThat(this.foodService.deleteFood(this.testFoodWithId.getId())).isFalse();
+		assertThat(this.foodService.deleteFood(this.testFoodWithID.getId())).isFalse();
 	}
 	
 	@Test
 	public void testFindFoodByID() throws FoodNotFoundException {
-		assertThat(this.foodService.findFoodByID(this.testFoodWithId.getId())).isEqualTo(this.testFoodWithId);
+		assertThat(this.foodService.findFoodByID(this.testFoodWithID.getId())).isEqualTo(this.testFoodWithID);
 	}
 	
 	@Test
@@ -61,8 +61,8 @@ public class FoodServiceIntergrationTest {
 		Food newFood = new Food("Test name", "Test allergens", "Test description", 1);
 		Food updatedFood = new Food(newFood.getName(), newFood.getAllergens(), newFood.getDescription(),
 				newFood.getLikes());
-		updatedFood.setId(this.testFoodWithId.getId());
+		updatedFood.setId(this.testFoodWithID.getId());
 
-		assertThat(this.foodService.updateFood(newFood, this.testFoodWithId.getId())).isEqualTo(updatedFood);
+		assertThat(this.foodService.updateFood(newFood, this.testFoodWithID.getId())).isEqualTo(updatedFood);
 	}
 }
