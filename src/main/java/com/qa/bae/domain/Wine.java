@@ -84,9 +84,17 @@ public class Wine {
 	public int getLikes() {
 		return likes;
 	}
-
+	
 	public void setLikes(int likes) {
 		this.likes = likes;
+	}
+
+	public Set<Food> getFood() {
+		return food;
+	}
+
+	public void setFood(Set<Food> food) {
+		this.food = food;
 	}
 
 	@Override
@@ -121,7 +129,7 @@ public class Wine {
 		if (description == null) {
 			if (other.description != null)
 				return false;
-		}
+		} 
 		else if (!description.equals(other.description))
 			return false;
 		if (food == null) {
@@ -153,8 +161,7 @@ public class Wine {
 		if (tastingNotes == null) {
 			if (other.tastingNotes != null)
 				return false;
-		} 
-		else if (!tastingNotes.equals(other.tastingNotes))
+		} else if (!tastingNotes.equals(other.tastingNotes))
 			return false;
 		return true;
 	}

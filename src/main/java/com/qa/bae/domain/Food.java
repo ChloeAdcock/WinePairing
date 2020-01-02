@@ -79,10 +79,18 @@ public class Food {
 		this.likes = likes;
 	}
 
+	public Wine getWine() {
+		return wine;
+	}
+
+	public void setWine(Wine wine) {
+		this.wine = wine;
+	}
+
 	@Override
 	public String toString() {
 		return "Food [id=" + id + ", name=" + name + ", allergens=" + allergens + ", description=" + description
-				+ ", likes=" + likes + "]";
+				+ ", likes=" + likes + ", wine=" + wine + "]";
 	}
 
 	@Override
@@ -94,6 +102,7 @@ public class Food {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + likes;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((wine == null) ? 0 : wine.hashCode());
 		return result;
 	}
 
@@ -121,7 +130,7 @@ public class Food {
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} 
+		}
 		else if (!id.equals(other.id))
 			return false;
 		if (likes != other.likes)
@@ -132,7 +141,12 @@ public class Food {
 		} 
 		else if (!name.equals(other.name))
 			return false;
+		if (wine == null) {
+			if (other.wine != null)
+				return false;
+		}
+		else if (!wine.equals(other.wine))
+			return false;
 		return true;
 	}
-
 }
