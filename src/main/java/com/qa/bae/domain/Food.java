@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Table(name = "food")
@@ -20,6 +22,10 @@ public class Food {
 	private String allergens;
 	private String description;
 	private int likes;
+	
+	@ManyToOne
+    @JoinColumn(name = "wine_id", insertable = false, updatable = false)
+    private Wine wine;
 
 	public Food(String name, String allergens, String description, int likes) {
 		super();
