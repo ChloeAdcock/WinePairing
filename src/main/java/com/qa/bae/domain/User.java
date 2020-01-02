@@ -15,14 +15,12 @@ public class User {
 	private String name;
 	private String email;
 	private String password;
-	private int adminCode;
 
-	public User(String name, String email, String password, int adminCode) {
+	public User(String name, String email, String password) {
 		super();
 		this.name = name;
 		this.email = email;
 		this.password = password;
-		this.adminCode = adminCode;
 	}
 
 	public User() {
@@ -61,25 +59,15 @@ public class User {
 		this.password = password;
 	}
 
-	public int getAdminCode() {
-		return adminCode;
-	}
-
-	public void setAdminCode(int adminCode) {
-		this.adminCode = adminCode;
-	}
-
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + ", adminCode="
-				+ adminCode + "]";
+		return "User [id=" + id + ", name=" + name + ", email=" + email + ", password=" + password + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + adminCode;
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -96,31 +84,25 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (adminCode != other.adminCode)
-			return false;
 		if (email == null) {
 			if (other.email != null)
 				return false;
-		} 
-		else if (!email.equals(other.email))
+		} else if (!email.equals(other.email))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
-		} 
-		else if (!id.equals(other.id))
+		} else if (!id.equals(other.id))
 			return false;
 		if (name == null) {
 			if (other.name != null)
 				return false;
-		} 
-		else if (!name.equals(other.name))
+		} else if (!name.equals(other.name))
 			return false;
 		if (password == null) {
 			if (other.password != null)
 				return false;
-		} 
-		else if (!password.equals(other.password))
+		} else if (!password.equals(other.password))
 			return false;
 		return true;
 	}

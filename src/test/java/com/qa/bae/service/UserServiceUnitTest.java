@@ -40,9 +40,9 @@ public class UserServiceUnitTest {
 	public void start() {
 		this.userList = new ArrayList<>();
 		this.userList.add(testUser);
-		this.testUser = new User("test name", "test email", "test password", 1); 
+		this.testUser = new User("test name", "test email", "test password"); 
 		this.testUserWithId = new User(testUser.getName(), testUser.getEmail(), 
-				testUser.getPassword(), testUser.getAdminCode());
+				testUser.getPassword());
 		this.testUserWithId.setId(id);
 	}
 	
