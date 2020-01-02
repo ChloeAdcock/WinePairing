@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.websocket.server.PathParam;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -23,17 +24,18 @@ public class WineController {
 	
 	private WineService wineService;
 	
+	@Autowired
 	public WineController(WineService wineService) {
 		super();
 		this.wineService = wineService;
 	}
 
-	@GetMapping("/wine")
+	@GetMapping("/getWines")
 	public List<Wine> getAllWines() {
 		return wineService.getAllWine();
 	}
 	
-	@PostMapping("/wine")
+	@PostMapping("/addWine")
 	public Wine addNewWine(@RequestBody Wine wine) {
 		return this.wineService.addNewWine(wine);
 	}

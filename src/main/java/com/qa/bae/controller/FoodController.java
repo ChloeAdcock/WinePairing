@@ -28,12 +28,12 @@ public class FoodController {
 		this.foodService = foodService;
 	}
 	
-	@GetMapping("/food")
+	@GetMapping("/getFoods")
 	public List<Food> getAllFoods() {
 		return foodService.getAllFood();
 	}
 	
-	@PostMapping("/food")
+	@PostMapping("/addFood")
 	public Food addNewFood(@RequestBody Food food) {
 		return foodService.addNewFood(food);
 	}
