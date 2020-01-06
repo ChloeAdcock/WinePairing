@@ -1,5 +1,6 @@
 package com.qa.bae.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -26,7 +27,7 @@ public class Wine {
 	private int likes;
 	
     @OneToMany(mappedBy="wine", fetch=FetchType.EAGER)
-    private Set<Food> food;
+    private Set<Food> food = new HashSet<>();
     
 	public Wine() {
 		super();
