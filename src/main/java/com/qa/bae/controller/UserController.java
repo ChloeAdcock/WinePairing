@@ -12,6 +12,7 @@ import com.qa.bae.service.UserNotFoundException;
 import com.qa.bae.service.UserService;
 
 @RestController
+@RequestMapping("/user")
 public class UserController {
 	
 	private UserService userService;
@@ -21,7 +22,7 @@ public class UserController {
 		this.userService = userService;
 	}
 	
-	@PostMapping("/user")
+	@PostMapping("/addUser")
 	public User addNewUser(@RequestBody User user) {
 		return this.userService.addNewUser(user);
 	}

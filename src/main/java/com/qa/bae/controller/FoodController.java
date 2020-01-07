@@ -17,6 +17,7 @@ import com.qa.bae.service.FoodNotFoundException;
 import com.qa.bae.service.FoodService;
 
 @RestController
+@RequestMapping("/food")
 public class FoodController {
 
 	private FoodService foodService;
@@ -26,12 +27,12 @@ public class FoodController {
 		this.foodService = foodService;
 	}
 	
-	@GetMapping("/food")
+	@GetMapping("/getFoods")
 	public List<Food> getAllFoods() {
 		return foodService.getAllFood();
 	}
 	
-	@PostMapping("/food")
+	@PostMapping("/addFood")
 	public Food addNewFood(@RequestBody Food food) {
 		return foodService.addNewFood(food);
 	}
