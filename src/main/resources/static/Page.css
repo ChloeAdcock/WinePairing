@@ -1,0 +1,49 @@
+body {
+  padding-top: 56px;
+}
+
+#navbar-colour {
+  background-color: black;
+}
+
+.bg-image-full {
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+#cardID {
+padding-left: 30px;
+padding-right: 30px;
+}
+
+.card {
+background-color: white;
+border-color: black;
+}
+
+#search_bar {
+  width: 30%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.card-text {
+  color: #495057;
+}
+
+#button {
+  float: right;
+}
+
+#num {
+  text-align: right;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
