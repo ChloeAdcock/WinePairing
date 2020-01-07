@@ -13,7 +13,7 @@ import com.qa.bae.service.UserNotFoundException;
 import com.qa.bae.service.UserService;
 
 @RestController
-@RequestMapping("/winepairingapp")
+@RequestMapping("/user")
 public class UserController {
 	
 	private UserService userService;

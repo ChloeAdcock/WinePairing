@@ -50,13 +50,13 @@ public class UserControllerIntegrationTest {
 	
 	@Test
 	public void testGetUser() throws Exception {
-		this.mock.perform(request(HttpMethod.GET, "/winepairingapp/getUser/" + this.id)).andExpect(status().isOk());
+		this.mock.perform(request(HttpMethod.GET, "/user/getUser/" + this.id)).andExpect(status().isOk());
 	}
 	
 	@Test
 	public void testAddNewUser() throws Exception {
 		String result = this.mock
-				.perform(request(HttpMethod.POST, "/winepairingapp/addUser").contentType(MediaType.APPLICATION_JSON)
+				.perform(request(HttpMethod.POST, "/user/addUser").contentType(MediaType.APPLICATION_JSON)
 						.content(this.mapper.writeValueAsString(testUser)).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 		assertEquals(this.mapper.writeValueAsString(testUserWithID), result);
@@ -64,6 +64,6 @@ public class UserControllerIntegrationTest {
 	
 	@Test
 	public void testDeleteUser() throws Exception {
-		this.mock.perform(request(HttpMethod.DELETE, "/winepairingapp/deleteUser/" + this.id)).andExpect(status().isOk());
+		this.mock.perform(request(HttpMethod.DELETE, "/user/deleteUser/" + this.id)).andExpect(status().isOk());
 	}
 }

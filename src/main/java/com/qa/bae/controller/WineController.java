@@ -19,7 +19,7 @@ import com.qa.bae.service.WineNotFoundException;
 import com.qa.bae.service.WineService;
 
 @RestController
-@RequestMapping("/winepairingapp")
+@RequestMapping("/wine")
 public class WineController {
 	
 	private WineService wineService;

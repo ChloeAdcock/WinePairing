@@ -55,7 +55,7 @@ public class WineControllerIntegrationTest {
 		List<Wine> wineList = new ArrayList<>();
 		wineList.add(this.testWineWithID);
 
-		String content = this.mock.perform(request(HttpMethod.GET, "/winepairingapp/getWines").accept(MediaType.APPLICATION_JSON))
+		String content = this.mock.perform(request(HttpMethod.GET, "/wine/getWines").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 
 		assertEquals(this.mapper.writeValueAsString(wineList), content);
@@ -64,7 +64,7 @@ public class WineControllerIntegrationTest {
 	@Test
 	public void testAddNewWine() throws Exception {
 		String result = this.mock
-				.perform(request(HttpMethod.POST, "/winepairingapp/addWine").contentType(MediaType.APPLICATION_JSON)
+				.perform(request(HttpMethod.POST, "/wine/addWine").contentType(MediaType.APPLICATION_JSON)
 						.content(this.mapper.writeValueAsString(testWine)).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 		assertEquals(this.mapper.writeValueAsString(testWineWithID), result);
@@ -72,12 +72,12 @@ public class WineControllerIntegrationTest {
 	
 	@Test
 	public void testDeleteWine() throws Exception {
-		this.mock.perform(request(HttpMethod.DELETE, "/winepairingapp/deleteWine/" + this.id)).andExpect(status().isOk());
+		this.mock.perform(request(HttpMethod.DELETE, "/wine/deleteWine/" + this.id)).andExpect(status().isOk());
 	}
 	
 	@Test
 	public void testGetWine() throws Exception {
-		this.mock.perform(request(HttpMethod.GET, "/winepairingapp/getWine/" + this.id)).andExpect(status().isOk());
+		this.mock.perform(request(HttpMethod.GET, "/wine/getWine/" + this.id)).andExpect(status().isOk());
 	}
 	
 	@Test
@@ -88,7 +88,7 @@ public class WineControllerIntegrationTest {
 		updatedWine.setId(this.id);
 
 		String result = this.mock
-				.perform(request(HttpMethod.PUT, "/winepairingapp/updateWine/?id=" + this.id).accept(MediaType.APPLICATION_JSON)
+				.perform(request(HttpMethod.PUT, "/wine/updateWine/?id=" + this.id).accept(MediaType.APPLICATION_JSON)
 						.contentType(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(newWine)))
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 		

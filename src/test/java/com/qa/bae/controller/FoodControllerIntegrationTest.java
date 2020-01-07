@@ -60,7 +60,7 @@ public class FoodControllerIntegrationTest {
 		List<Food> foodList = new ArrayList<>();
 		foodList.add(this.testFoodWithID);
 
-		String content = this.mock.perform(request(HttpMethod.GET, "/wineparingapp/getFoods").accept(MediaType.APPLICATION_JSON))
+		String content = this.mock.perform(request(HttpMethod.GET, "/food/getFoods").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 
 		assertEquals(this.mapper.writeValueAsString(foodList), content);
@@ -77,12 +77,12 @@ public class FoodControllerIntegrationTest {
 	
 	@Test
 	public void testDeleteFood() throws Exception {
-		this.mock.perform(request(HttpMethod.DELETE, "/winepairingapp/deleteFood/" + this.id)).andExpect(status().isOk());
+		this.mock.perform(request(HttpMethod.DELETE, "/food/deleteFood/" + this.id)).andExpect(status().isOk());
 	}
 	
 	@Test
 	public void testGetFood() throws Exception {
-		this.mock.perform(request(HttpMethod.GET, "/winepairingapp/getFood/" + this.id)).andExpect(status().isOk());
+		this.mock.perform(request(HttpMethod.GET, "/food/getFood/" + this.id)).andExpect(status().isOk());
 	}
 	
 	@Test
@@ -93,7 +93,7 @@ public class FoodControllerIntegrationTest {
 		updatedFood.setId(this.id);
 
 		String result = this.mock
-				.perform(request(HttpMethod.PUT, "/winepairingapp/updateFood/?id=" + this.id).accept(MediaType.APPLICATION_JSON)
+				.perform(request(HttpMethod.PUT, "/food/updateFood/?id=" + this.id).accept(MediaType.APPLICATION_JSON)
 						.contentType(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(newFood)))
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 		
