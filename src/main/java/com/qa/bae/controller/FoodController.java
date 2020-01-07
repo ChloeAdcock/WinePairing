@@ -18,7 +18,7 @@ import com.qa.bae.service.FoodNotFoundException;
 import com.qa.bae.service.FoodService;
 
 @RestController
-@RequestMapping("/winepairingapp")
+@RequestMapping("/food")
 public class FoodController {
 
 	private FoodService foodService;
