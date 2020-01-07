@@ -1,13 +1,14 @@
 package com.qa.bae.domain;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -25,9 +26,8 @@ public class Wine {
 	private String tastingNotes;
 	private int likes;
 	
-    @OneToMany
-    @JoinColumn(name="food_id")
-    private Set<Food> food;
+    @OneToMany(mappedBy="wine", fetch=FetchType.EAGER)
+    private Set<Food> food = new HashSet<>();
     
 	public Wine() {
 		super();
@@ -85,9 +85,17 @@ public class Wine {
 	public int getLikes() {
 		return likes;
 	}
-
+	
 	public void setLikes(int likes) {
 		this.likes = likes;
+	}
+
+	public Set<Food> getFood() {
+		return food;
+	}
+
+	public void setFood(Set<Food> food) {
+		this.food = food;
 	}
 
 	@Override
@@ -122,7 +130,7 @@ public class Wine {
 		if (description == null) {
 			if (other.description != null)
 				return false;
-		}
+		} 
 		else if (!description.equals(other.description))
 			return false;
 		if (food == null) {
@@ -154,8 +162,7 @@ public class Wine {
 		if (tastingNotes == null) {
 			if (other.tastingNotes != null)
 				return false;
-		} 
-		else if (!tastingNotes.equals(other.tastingNotes))
+		} else if (!tastingNotes.equals(other.tastingNotes))
 			return false;
 		return true;
 	}
