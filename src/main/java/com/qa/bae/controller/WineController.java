@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qa.bae.domain.Wine;
@@ -18,7 +17,6 @@ import com.qa.bae.service.WineNotFoundException;
 import com.qa.bae.service.WineService;
 
 @RestController
-@RequestMapping("/winepairingapp")
 public class WineController {
 	
 	private WineService wineService;
