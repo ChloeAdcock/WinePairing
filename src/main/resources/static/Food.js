@@ -1,5 +1,5 @@
 function getFoods() {
-    axios.get("http://localhost:8080/winepairingapp/getFoods")
+    axios.get("http://localhost:8080/food/getFoods")
     .then ((response) => {
         showFoods(response.data);
     }).catch ((error) => {
@@ -33,10 +33,11 @@ function showFoods(foods) {
     
         foodList.append(foodCard);
     }
-    }
+    
+}
 
 function deleteFood() {
-    axios.get("http://localhost:8080/winepairingapp/deleteFood")
+    axios.delete("http://localhost:8080/winepairingapp/deleteFood")
     .then ((response) => {
         removeFood(response.data);
     }).catch ((error) => {
@@ -49,7 +50,7 @@ function removeFood() {
 }
 
 function likeFood() {
-    axios.get("http://localhost:8080/winepairingapp/updateFood")
+    axios.put("http://localhost:8080/winepairingapp/updateFood")
     .then ((response) => {
         addLike(response.data);
     }).catch ((error) => {

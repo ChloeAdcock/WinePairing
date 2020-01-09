@@ -37,3 +37,12 @@ body {
   border-radius: .25rem;
   margin-top: 20px;
 }
+
+br {
+  line-height: 125%;
+}
+
+button {
+  width: 100%;
+}
+

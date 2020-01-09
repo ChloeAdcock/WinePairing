@@ -51,21 +51,24 @@
             <div class="form-group">
               <label for="wineName">Wine name</label>
               <input type="text" class="form-control" id="inputWineName" aria-describedby="wineName" placeholder="Enter wine name">
+              <small id="descriptionHelp" class="form-text text-muted">Maximum 100 characters</small>
             </div>
             <div class="form-group">
               <label for="grape">Grape</label>
               <input type="text" class="form-control" id="inputGrape" placeholder="Enter grape">
+              <small id="descriptionHelp" class="form-text text-muted">Maximum 100 characters</small>
             </div>
             <div class="form-group">
               <label for="description">Description</label>
-              <input type="text" class="form-control" id="inputDescription" placeholder="Enter description">
+              <input type="text" class="form-control" id="inputWineDescription" placeholder="Enter description">
               <small id="descriptionHelp" class="form-text text-muted">Maximum 100 characters</small>
             </div>
             <div class="form-group">
               <label for="tastingNotes">Tasting notes</label>
               <input type="type" class="form-control" id="inputTastingNotes" placeholder="Enter tasting notes">
+              <small id="descriptionHelp" class="form-text text-muted">Maximum 100 characters</small>
             </div>
-            <button type="button" class="btn btn-light btn-block" id = "submitButton">Add wine</button>
+            <button type="button" class="btn btn-light btn-block" id = "submitWine" onclick="addWine();">Add wine</button>
           </form>
         </div>
         <div class="col">
@@ -74,32 +77,32 @@
             <div class="form-group">
               <label for="foodName">Name</label>
               <input type="text" class="form-control" id="inputFoodName" aria-describedby="foodName" placeholder="Enter name">
+              <small id="descriptionHelp" class="form-text text-muted">Maximum 100 characters</small>
             </div>
             <div class="form-group">
               <label for="allergens">Allergens</label>
               <input type="text" class="form-control" id="inputAllergens" placeholder="Enter allergens">
+              <small id="descriptionHelp" class="form-text text-muted">Maximum 100 characters</small>
             </div>
             <div class="form-group">
               <label for="description">Description</label>
-              <input type="text" class="form-control" id="input description" placeholder="Enter description">
+              <input type="text" class="form-control" id="inputFoodDescription" placeholder="Enter description">
               <small id="descriptionHelp" class="form-text text-muted">Maximum 100 characters</small>
             </div>
             <div class="form-group">
               <label for="winePairing">Wine pairing</label>
               <br>
               <div class="dropdown">
-                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Select wine
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                  <button class="dropdown-item" type="button">Action</button>
-                  <button class="dropdown-item" type="button">Another action</button>
-                  <button class="dropdown-item" type="button">Something else here</button>
-                </div>
+               <select class="form-control" id="wineDropdown" onload="getWines()"></select>
               </div>
-            <button type="button" class="btn btn-light btn-block" id = "submitButton">Add meal</button>
+              <br id="break"></br>
+            <button type="button" class="btn btn-light btn-block" id = "submitFood" onclick="addFood()">Add meal</button>
           </form>
       </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+        <script src ="Home.js"></script>
+        <script>getWines()</script>
+        <script>showWineNames()</script>
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
