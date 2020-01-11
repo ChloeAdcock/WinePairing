@@ -26,7 +26,7 @@ function addWine() {
         
         axios.post("http://localhost:" + PORT + "/wine/addWine", data)     
         .then ((response) => {
-            console.log("post wines request: "+data)
+            console.log("post wines request: " + data)
             location.reload();
         }).catch ((error) => {
             console.error(error);
