@@ -1,7 +1,12 @@
-function getFoods() {
-    axios.get("http://localhost:8080/food/getFoods")
+const PORT = 8081;
+
+let allFoods = [];
+function getAllFoods() {
+    axios.get("http://localhost:" + PORT + "/food/getFoods")
     .then ((response) => {
-        showFoods(response.data);
+        allFoods = response.data;
+        console.log(allFoods)
+        showAllFoods();
     }).catch ((error) => {
         console.error(error);
     })
@@ -9,7 +14,7 @@ function getFoods() {
 
 const foodList = document.getElementById("foods");
 
-function showFoods(foods) {
+function showAllFoods(foods) {
 
     for (let food of foods) {
     

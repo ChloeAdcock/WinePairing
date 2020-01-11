@@ -26,14 +26,16 @@ function showAllWines() {
         wineCard.appendChild(cardBody);
     
         const wineName = document.createElement("h5");
+        const deleteButton = document.createElement("button");
         wineName.className = "card-title";
         wineName.innerText = wine.name;
         cardBody.appendChild(wineName);
+        deleteButton.class = "far fa-trash-alt";
     
         const wineDetails = document.createElement("p");
         wineDetails.className = "card-details"
         wineDetails.innerText = "Name \n" + wine.name + "\n Grape \n" + wine.grape + "\n Description \n" + wine.description
-        + "\n Tasting notes" + wine.tastingNotes;
+        + "\n Tasting notes \n" + wine.tastingNotes;
         cardBody.appendChild(wineDetails);
     
         wineList.append(wineCard);
