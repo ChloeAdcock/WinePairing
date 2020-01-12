@@ -31,6 +31,11 @@ div.card {
   color: #495057;
 }
 
+.cardVariables {
+  color: black;
+  font-weight: thick;
+}
+
 .card-title {
   color: black;
   font-weight: thick;
@@ -49,6 +54,10 @@ div.card {
   width: 33.33%;
 }
 
-.wineData {
-  color: blue;
+.w-30 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 31%;
+  flex: 0 0 31%;
+  max-width: 31%;
 }
+

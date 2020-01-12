@@ -51,7 +51,7 @@ const wineList = document.getElementById("wineDropdown");
 function showWineNames() {
     
     for (let wine of wines) {
-        const newWine = document.createElement("option");
+         const newWine = document.createElement("option");
          newWine.innerText = wine.name;
          newWine.value = wine.id;
          wineList.appendChild(newWine);
