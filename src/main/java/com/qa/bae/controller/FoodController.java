@@ -16,16 +16,20 @@ import org.springframework.web.bind.annotation.RestController;
 import com.qa.bae.domain.Food;
 import com.qa.bae.service.FoodNotFoundException;
 import com.qa.bae.service.FoodService;
+import com.qa.bae.service.WineNotFoundException;
+import com.qa.bae.service.WineService;
 
 @RestController
 @RequestMapping("/food")
 public class FoodController {
 
 	private FoodService foodService;
+	private WineService wineService;
 	
-	public FoodController(FoodService foodService) {
+	public FoodController(FoodService foodService, WineService wineService) {
 		super();
 		this.foodService = foodService;
+		this.wineService = wineService;
 	}
 	
 	@GetMapping("/getFoods")
@@ -34,7 +38,8 @@ public class FoodController {
 	}
 	
 	@PostMapping("/addFood")
-	public Food addNewFood(@RequestBody Food food) {
+	public Food addNewFood(@RequestBody Food food, @PathParam(value = "id") Long id ) throws WineNotFoundException {
+		food.setWine(wineService.findWineById(id));
 		return foodService.addNewFood(food);
 	}
 	

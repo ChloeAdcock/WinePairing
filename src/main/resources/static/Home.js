@@ -72,7 +72,7 @@ function addFood() {
         }
     }
     
-    axios.post("http://localhost:" + PORT + "/food/addFood", data)     
+    axios.post("http://localhost:" + PORT + "/food/addFood?id=" + winePairing, data)     
     .then ((response) => {
         console.log("post foods request: " + data)
         location.reload();  

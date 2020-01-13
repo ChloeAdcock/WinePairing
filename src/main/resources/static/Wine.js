@@ -13,6 +13,7 @@ let allWines = [];
 }
 
 const wineList = document.getElementById("wines");
+const deleteButton = document.createElement("button");
 
 function showAllWines() {
 
@@ -21,11 +22,10 @@ function showAllWines() {
         const wineCard = document.createElement("div");
         wineCard.className = "card w-30 m-3";
 
-        const deleteButton = document.createElement("button");
         deleteButton.className = "btn btn-default btn-sm far fa-trash-alt";
-        deleteButton.value = wine.id;
-        deleteButton.addEventListener("click", deleteWine());
+        deleteButton.id = wine.id;
         wineCard.appendChild(deleteButton);
+        deleteButton.onclick = deleteWine;
     
         const cardBody = document.createElement("div");
         cardBody.className = "card-body";
@@ -60,9 +60,10 @@ function showAllWines() {
 }
 
 function deleteWine() {
-    axios.delete("http://localhost:" + PORT + "/wine/deleteWine/{" + deleteButton.value + "}")
+    axios.delete("http://localhost:" + PORT + "/wine/deleteWine/" + deleteButton.id )
     .then ((response) => {
-        removeWine("Delete wine with ID of " + deleteButton.value + ": " + response.data);
+        console.log("Delete wine with ID of " + deleteButton.id + ": " + response.data);
+        location.reload();
     }).catch ((error) => {
         console.error(error);
     })
