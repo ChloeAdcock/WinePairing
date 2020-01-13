@@ -25,9 +25,6 @@ public class Wine {
 	private String description;
 	private String tastingNotes;
 	private int likes;
-	
-    @OneToMany(mappedBy="wine", fetch=FetchType.EAGER)
-    private Set<Food> food = new HashSet<>();
     
 	public Wine() {
 		super();
@@ -90,18 +87,10 @@ public class Wine {
 		this.likes = likes;
 	}
 
-	public Set<Food> getFood() {
-		return food;
-	}
-
-	public void setFood(Set<Food> food) {
-		this.food = food;
-	}
-
 	@Override
 	public String toString() {
 		return "Wine [id=" + id + ", name=" + name + ", grape=" + grape + ", description=" + description
-				+ ", tastingNotes=" + tastingNotes + ", likes=" + likes + ", food=" + food + "]";
+				+ ", tastingNotes=" + tastingNotes + ", likes=" + likes + "]";
 	}
 
 	@Override
@@ -109,7 +98,6 @@ public class Wine {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((food == null) ? 0 : food.hashCode());
 		result = prime * result + ((grape == null) ? 0 : grape.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + likes;
@@ -132,12 +120,6 @@ public class Wine {
 				return false;
 		} 
 		else if (!description.equals(other.description))
-			return false;
-		if (food == null) {
-			if (other.food != null)
-				return false;
-		} 
-		else if (!food.equals(other.food))
 			return false;
 		if (grape == null) {
 			if (other.grape != null)
@@ -162,8 +144,10 @@ public class Wine {
 		if (tastingNotes == null) {
 			if (other.tastingNotes != null)
 				return false;
-		} else if (!tastingNotes.equals(other.tastingNotes))
+		} 
+		else if (!tastingNotes.equals(other.tastingNotes))
 			return false;
 		return true;
 	}
+
 }

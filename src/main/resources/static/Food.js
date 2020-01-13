@@ -1,7 +1,12 @@
-function getFoods() {
-    axios.get("http://localhost:8080/food/getFoods")
+const PORT = 8081;
+
+let allFoods = [];
+function getAllFoods() {
+    axios.get("http://localhost:" + PORT + "/food/getFoods")
     .then ((response) => {
-        showFoods(response.data);
+        allFoods = response.data;
+        console.log("Get all foods request: " + allFoods);
+        showAllFoods();
     }).catch ((error) => {
         console.error(error);
     })
@@ -9,26 +14,35 @@ function getFoods() {
 
 const foodList = document.getElementById("foods");
 
-function showFoods(foods) {
+function showAllFoods() {
 
-    for (let food of foods) {
+    for (let food of allFoods) {
     
         const foodCard = document.createElement("div");
-        foodCard.className = "card m-5";
+        foodCard.className = "card w-30 m-3";
+
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "btn btn-default btn-sm far fa-trash-alt";
+        deleteButton.value = food.id;
+        foodCard.appendChild(deleteButton);
     
         const cardBody = document.createElement("div");
         cardBody.className = "card-body";
         foodCard.appendChild(cardBody);
+
+        const likeButton = document.createElement("button");
+        likeButton.className = "btn btn-default btn-sm far fa-thumbs-up";
+        foodCard.appendChild(likeButton);
     
         const foodName = document.createElement("h5");
         foodName.className = "card-title";
-        foodName.innerText = food.name;
+        foodName.innerText = (food.name).toUpperCase();
         cardBody.appendChild(foodName);
     
         const foodDetails = document.createElement("p");
         foodDetails.className = "card-details"
-        foodDetails.innerText = "Name" + food.name + "\n Allergens" + food.allergens + "\n Description" + food.description
-        + "\n Wine pairing" + food.wine;
+        foodDetails.innerText = "Allergens \n" + food.allergens + "\n Description \n" + food.description
+        + "\n Wine pairing \n" + food.wine.name;
         cardBody.appendChild(foodDetails);
     
         foodList.append(foodCard);

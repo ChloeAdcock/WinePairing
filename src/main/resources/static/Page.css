@@ -14,16 +14,6 @@ body {
   -o-background-size: cover;
 }
 
-#cardID {
-padding-left: 30px;
-padding-right: 30px;
-}
-
-.card {
-background-color: white;
-border-color: black;
-}
-
 #search_bar {
   width: 30%;
   padding: 10px;
@@ -31,8 +21,24 @@ border-color: black;
   margin-right: auto;
 }
 
-.card-text {
+div.card {
+  background-color: white;
+  border-color: black;
+  border-width: medium;
+}
+
+.card-details {
   color: #495057;
+}
+
+.cardVariables {
+  color: black;
+  font-weight: thick;
+}
+
+.card-title {
+  color: black;
+  font-weight: thick;
 }
 
 #button {
@@ -47,3 +53,15 @@ border-color: black;
   float: left;
   width: 33.33%;
 }
+
+.w-30 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 31%;
+  flex: 0 0 31%;
+  max-width: 31%;
+}
+
+.card-title {
+  font-size: 30px;
+}
+
