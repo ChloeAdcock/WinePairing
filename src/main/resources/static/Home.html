@@ -47,7 +47,7 @@
       <div class="row">
         <div class="col">
           <h2>Add New Wine</h2>
-          <form>
+          <form name="wineForm">
             <div class="form-group">
               <label for="wineName">Wine name</label>
               <input type="text" class="form-control" id="inputWineName" aria-describedby="wineName" placeholder="Enter wine name">
@@ -68,7 +68,7 @@
               <input type="type" class="form-control" id="inputTastingNotes" placeholder="Enter tasting notes">
               <small id="descriptionHelp" class="form-text text-muted">Maximum 100 characters</small>
             </div>
-            <button type="button" class="btn btn-light btn-block" id = "submitWine" onclick="addWine();">Add wine</button>
+            <button type="button" class="btn btn-light btn-block" id = "submitWine" onclick="addWine(); return notEmpty();">Add wine</button>
           </form>
         </div>
         <div class="col">

@@ -1,21 +1,20 @@
-function alphanumeric(inputText) {
-    var letters = /^[0-9a-zA-Z]+$/;
-    if(inputtxt.value.match(letters)){
-        return inputText;
+function notEmpty(){
+    let nameInput = document.forms["wineForm"]["inputWineName"].value;
+    let text = document.getElementById("descriptionHelp").innerHTML;
+    if (nameInput == "") {
+        text = "Name must be filled out";
+        return false;
     }
-    else {
-        return null;
-        alert('Please input alphanumeric characters only');
-    }
+    return true;
 }
 
 const PORT = 8081;
 
 function addWine() {
-        var wineName = document.getElementById('inputWineName').value;
-        var wineGrape = document.getElementById('inputGrape').value;
-        var wineDescription = document.getElementById('inputWineDescription').value;
-        var tastingNotes = document.getElementById('inputTastingNotes').value;
+        let wineName = document.getElementById('inputWineName').value;
+        let wineGrape = document.getElementById('inputGrape').value;
+        let wineDescription = document.getElementById('inputWineDescription').value;
+        let tastingNotes = document.getElementById('inputTastingNotes').value;
 
         const data = {
             "name": wineName,
@@ -74,8 +73,10 @@ function addFood() {
     }
     
     axios.post("http://localhost:" + PORT + "/food/addFood", data)     
-    .then (console.log(data))   
-    .catch ((error) => {
+    .then ((response) => {
+        console.log("post foods request: " + data)
+        location.reload();  
+    }).catch ((error) => {
         console.error(error);
     }
 )}

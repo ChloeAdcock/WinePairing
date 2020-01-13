@@ -20,13 +20,20 @@ function showAllWines() {
     
         const wineCard = document.createElement("div");
         wineCard.className = "card w-30 m-3";
+
+        const deleteButton = document.createElement("button");
+        deleteButton.className = "btn btn-default btn-sm far fa-trash-alt";
+        deleteButton.value = wine.id;
+        deleteButton.addEventListener("click", deleteWine());
+        wineCard.appendChild(deleteButton);
     
         const cardBody = document.createElement("div");
         cardBody.className = "card-body";
         wineCard.appendChild(cardBody);
 
-        const deleteButton = document.createElement("button");
-        deleteButton.innerText = "Delete";
+        const likeButton = document.createElement("button");
+        likeButton.className = "btn btn-default btn-sm far fa-thumbs-up";
+        wineCard.appendChild(likeButton);
     
         const wineName = document.createElement("h5");
         wineName.className = "card-title";
@@ -46,15 +53,16 @@ function showAllWines() {
         wineDetails.innerText = grape + wine.grape + description + wine.description
         + tastingNotes + wine.tastingNotes;
         cardBody.appendChild(wineDetails);
+       
         wineList.append(wineCard);
     }
     
 }
 
 function deleteWine() {
-    axios.delete("http://localhost:8080/winepairingapp/deleteWine")
+    axios.delete("http://localhost:" + PORT + "/wine/deleteWine/{" + deleteButton.value + "}")
     .then ((response) => {
-        removeWine(response.data);
+        removeWine("Delete wine with ID of " + deleteButton.value + ": " + response.data);
     }).catch ((error) => {
         console.error(error);
     })

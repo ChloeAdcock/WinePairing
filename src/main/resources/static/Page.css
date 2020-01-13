@@ -61,3 +61,7 @@ div.card {
   max-width: 31%;
 }
 
+.card-title {
+  font-size: 30px;
+}
+
