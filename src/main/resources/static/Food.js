@@ -13,7 +13,6 @@ function getAllFoods() {
 }
 
 const foodList = document.getElementById("foods");
-const deleteFoodButton = document.createElement("button");
 
 function showAllFoods() {
 
@@ -22,10 +21,11 @@ function showAllFoods() {
         const foodCard = document.createElement("div");
         foodCard.className = "card w-30 m-3";
 
+        let deleteFoodButton = document.createElement("button");
         deleteFoodButton.className = "btn btn-default btn-sm far fa-trash-alt";
         deleteFoodButton.id = food.id;
         foodCard.appendChild(deleteFoodButton);
-        deleteFoodButton.onclick = deleteFood;
+        deleteFoodButton.addEventListener('click', () => deleteFood(food.id));
     
         const cardBody = document.createElement("div");
         cardBody.className = "card-body";
@@ -42,16 +42,27 @@ function showAllFoods() {
         foodDetails.innerText = "Allergens \n" + food.allergens + "\n Description \n" + food.description
         + "\n Wine pairing \n" + name;
         cardBody.appendChild(foodDetails);
+
+        const numLikes = document.createElement("p");
+        numLikes.className = "numLikes";
+        numLikes.innerText = food.likes;
+        foodCard.appendChild(numLikes);
+
+        let likeFoodButton = document.createElement("button");
+        likeFoodButton.className = "btn btn-default btn-sm far fa-thumbs-up";
+        likeFoodButton.id = food.id;
+        foodCard.appendChild(likeFoodButton);
+        likeFoodButton.addEventListener('click', () => updateFoodLikes(food, food.id));
     
         foodList.append(foodCard);
     }
     
 }
 
-function deleteFood() {
-    axios.delete("http://localhost:" + PORT + "/food/deleteFood/" + deleteFoodButton.id)
+function deleteFood(id) {
+    axios.delete("http://localhost:" + PORT + "/food/deleteFood/" + id)
     .then ((response) => {
-        console.log("Delete food with ID of " + deleteFoodButton.id + ": " + response.data);
+        console.log("Delete food with ID of " + id + ": " + response.data);
         location.reload();
     }).catch ((error) => {
         console.error(error);
@@ -59,16 +70,26 @@ function deleteFood() {
 }
 
 
-function likeFood() {
-    axios.put("http://localhost:8080/winepairingapp/updateFood")
+function updateFoodLikes(foodObj, id) {
+
+    let data = {
+        "name": foodObj.name,
+        "allergens": foodObj.allergens,
+        "description": foodObj.description,
+        "likes": foodObj.likes,
+        "wine": {
+            "id": foodObj.wine.id
+        }
+    }
+
+    console.log(id);
+    console.log("Like food: " + JSON.stringify(data));
+
+    axios.put("http://localhost:" + PORT + "/food/updateFood?id=" + id, data)
     .then ((response) => {
-        addLike(response.data);
+        location.reload();
     }).catch ((error) => {
         console.error(error);
     })
-}
-
-function addLike() {
-    
 }
 

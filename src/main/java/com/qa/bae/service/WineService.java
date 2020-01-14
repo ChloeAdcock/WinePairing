@@ -49,7 +49,9 @@ public class WineService {
 		toUpdate.setGrape(wine.getGrape());
 		toUpdate.setDescription(wine.getDescription());
 		toUpdate.setTastingNotes(wine.getTastingNotes());
-		toUpdate.setLikes(wine.getLikes());
-		return this.wineRepo.save(toUpdate);
+		int newLikes = wine.getLikes();
+		newLikes++;
+		toUpdate.setLikes(newLikes);
+		return this.wineRepo.saveAndFlush(toUpdate);
 	}
 }

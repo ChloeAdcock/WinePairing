@@ -43,8 +43,10 @@ public class FoodService {
 		toUpdate.setName(food.getName());
 		toUpdate.setAllergens(food.getAllergens());
 		toUpdate.setDescription(food.getDescription());
-		toUpdate.setLikes(food.getLikes());
-		return this.foodRepo.save(toUpdate);
+		int newLikes = food.getLikes();
+		newLikes++;
+		toUpdate.setLikes(newLikes);
+		return this.foodRepo.saveAndFlush(toUpdate);
 	}
 }
 

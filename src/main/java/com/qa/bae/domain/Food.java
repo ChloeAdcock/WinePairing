@@ -1,6 +1,5 @@
 package com.qa.bae.domain;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -28,8 +27,9 @@ public class Food {
 	private String description;
 	private int likes;
 
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="wine_id", nullable=true)
+	@OnDelete(action = OnDeleteAction.NO_ACTION)
     private Wine wine;
 	
 	public Food(String name, String allergens, String description, int likes) {

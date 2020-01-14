@@ -13,7 +13,6 @@ let allWines = [];
 }
 
 const wineList = document.getElementById("wines");
-const deleteWineButton = document.createElement("button");
 
 function showAllWines() {
 
@@ -22,10 +21,11 @@ function showAllWines() {
         const wineCard = document.createElement("div");
         wineCard.className = "card w-30 m-3";
 
+        let deleteWineButton = document.createElement("button");
         deleteWineButton.className = "btn btn-default btn-sm far fa-trash-alt";
         deleteWineButton.id = wine.id;
         wineCard.appendChild(deleteWineButton);
-        deleteWineButton.onclick = deleteWine;
+        deleteWineButton.addEventListener('click', () => deleteWine(wine.id));
     
         const cardBody = document.createElement("div");
         cardBody.className = "card-body";
@@ -47,29 +47,48 @@ function showAllWines() {
         wineDetails.innerText = grape + wine.grape + description + wine.description
         + tastingNotes + wine.tastingNotes;
         cardBody.appendChild(wineDetails);
+
+        const numLikes = document.createElement("p");
+        numLikes.className = "numLikes";
+        numLikes.innerText = wine.likes;
+        wineCard.appendChild(numLikes);
+
+        let likeWineButton = document.createElement("button");
+        likeWineButton.className = "btn btn-default btn-sm far fa-thumbs-up";
+        likeWineButton.id = wine.id;
+        wineCard.appendChild(likeWineButton);
+        likeWineButton.addEventListener('click', () => updateWineLikes(wine, wine.id));
        
         wineList.append(wineCard);
     }
     
 }
 
-function deleteWine() {
-    axios.delete("http://localhost:" + PORT + "/wine/deleteWine/" + deleteWineButton.id )
+function deleteWine(id) {
+    axios.delete("http://localhost:" + PORT + "/wine/deleteWine/" + id )
     .then ((response) => {
-        console.log("Delete wine with ID of " + deleteWineButton.id + ": " + response.data);
+        console.log("Delete wine with ID of " + id + ": " + response.data);
+        location.reload();
     }).catch ((error) => {
         console.error(error);
     })
 }
 
-function likeWine() {
+function updateWineLikes(wineObj, id) {
 
-    let wineLikes = document.getElementById(wine.id).value;
+    let data = {
+        "name": wineObj.name,
+        "grape": wineObj.grape,
+        "description": wineObj.description,
+        "tastingNotes": wineObj.tastingNotes,
+        "likes": wineObj.likes
+    }
 
+    console.log(id);
+    console.log("Like wine: " + JSON.stringify(data));
 
-    axios.put("http://localhost:" + PORT + "/wine/updateWine?id=" + likeWineButton.id)
+    axios.put("http://localhost:" + PORT + "/wine/updateWine?id=" + id, data)
     .then ((response) => {
-        addLike(response.data);
         location.reload();
     }).catch ((error) => {
         console.error(error);
