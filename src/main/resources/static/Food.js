@@ -13,6 +13,7 @@ function getAllFoods() {
 }
 
 const foodList = document.getElementById("foods");
+const deleteFoodButton = document.createElement("button");
 
 function showAllFoods() {
 
@@ -21,18 +22,14 @@ function showAllFoods() {
         const foodCard = document.createElement("div");
         foodCard.className = "card w-30 m-3";
 
-        const deleteButton = document.createElement("button");
-        deleteButton.className = "btn btn-default btn-sm far fa-trash-alt";
-        deleteButton.value = food.id;
-        foodCard.appendChild(deleteButton);
+        deleteFoodButton.className = "btn btn-default btn-sm far fa-trash-alt";
+        deleteFoodButton.id = food.id;
+        foodCard.appendChild(deleteFoodButton);
+        deleteFoodButton.onclick = deleteFood;
     
         const cardBody = document.createElement("div");
         cardBody.className = "card-body";
         foodCard.appendChild(cardBody);
-
-        const likeButton = document.createElement("button");
-        likeButton.className = "btn btn-default btn-sm far fa-thumbs-up";
-        foodCard.appendChild(likeButton);
     
         const foodName = document.createElement("h5");
         foodName.className = "card-title";
@@ -41,8 +38,9 @@ function showAllFoods() {
     
         const foodDetails = document.createElement("p");
         foodDetails.className = "card-details"
+        let name = food.wine ?  food.wine.name :  'None';
         foodDetails.innerText = "Allergens \n" + food.allergens + "\n Description \n" + food.description
-        + "\n Wine pairing \n" + food.wine.name;
+        + "\n Wine pairing \n" + name;
         cardBody.appendChild(foodDetails);
     
         foodList.append(foodCard);
@@ -51,17 +49,15 @@ function showAllFoods() {
 }
 
 function deleteFood() {
-    axios.delete("http://localhost:8080/winepairingapp/deleteFood")
+    axios.delete("http://localhost:" + PORT + "/food/deleteFood/" + deleteFoodButton.id)
     .then ((response) => {
-        removeFood(response.data);
+        console.log("Delete food with ID of " + deleteFoodButton.id + ": " + response.data);
+        location.reload();
     }).catch ((error) => {
         console.error(error);
     })
 }
 
-function removeFood() {
-
-}
 
 function likeFood() {
     axios.put("http://localhost:8080/winepairingapp/updateFood")

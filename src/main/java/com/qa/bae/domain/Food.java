@@ -30,7 +30,6 @@ public class Food {
 
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name="wine_id", nullable=true)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Wine wine;
 	
 	public Food(String name, String allergens, String description, int likes) {

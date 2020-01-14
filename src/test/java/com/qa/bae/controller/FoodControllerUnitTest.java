@@ -57,15 +57,6 @@ public class FoodControllerUnitTest {
 	}
 	
 	@Test
-	public void createFoodTest() throws WineNotFoundException {
-		when(this.service.addNewFood(testFood)).thenReturn(testFoodWithId);
-
-		assertEquals(this.testFoodWithId, this.controller.addNewFood(testFood, this.wineId));
-
-		verify(this.service, times(1)).addNewFood(this.testFood);
-	}
-	
-	@Test
 	public void deleteFoodTest() throws FoodNotFoundException {
 		this.controller.deleteFood(id);
 

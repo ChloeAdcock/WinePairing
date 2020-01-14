@@ -43,6 +43,7 @@ public class WineController {
 	@DeleteMapping("/deleteWine/{id}")
 	public void deleteWine(@PathVariable Long id) throws WineNotFoundException {
 		this.wineService.deleteWine(id);
+		
 	}
 
 	@GetMapping("/getWine/{id}")

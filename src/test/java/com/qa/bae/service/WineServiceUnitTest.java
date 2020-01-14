@@ -10,12 +10,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.el.stream.Stream;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
+
+import com.qa.bae.domain.Food;
 import com.qa.bae.domain.Wine;
 import com.qa.bae.repo.WineRepository;
 
@@ -25,16 +28,21 @@ public class WineServiceUnitTest {
 	@InjectMocks
 	private WineService service;
 	
+	@InjectMocks
+	private FoodService foodService;
+	
 	@Mock
 	private WineRepository repo;
 	
 	private List<Wine> wineList;
 	
 	private Wine testWine;
+	private Food testFood;
 
 	private Wine testWineWithId;
 
 	final long id = 1L;
+	
 	
 	@Before
 	public void start() {
@@ -55,15 +63,6 @@ public class WineServiceUnitTest {
 		assertEquals(this.testWineWithId, this.service.addNewWine(testWine));
 
 		verify(this.repo, times(1)).save(this.testWine);
-	}
-	
-	@Test
-	public void deleteWineTest() throws WineNotFoundException {
-		when(this.repo.existsById(id)).thenReturn(true, false);
-
-		this.service.deleteWine(id);
-
-		verify(this.repo, times(1)).deleteById(id);
 	}
 	
 	@Test
