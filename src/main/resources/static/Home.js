@@ -1,11 +1,9 @@
 function notEmpty(){
     let nameInput = document.forms["wineForm"]["inputWineName"].value;
-    let text = document.getElementById("descriptionHelp").innerHTML;
+    let text = document.getElementById("descriptionHelp").innerText;
     if (nameInput == "") {
         text = "Name must be filled out";
-        return false;
     }
-    return true;
 }
 
 const PORT = 8081;

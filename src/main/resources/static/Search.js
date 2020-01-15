@@ -24,9 +24,17 @@ function getAllFoods() {
     })
 }
 
+const itemsList = document.getElementById("items");
+
 function searchFoods() {
 
     for (let food of allFoods) {
+
+        let searchInput = document.getElementById("search_input").value;
+        debugger;
+        if (Object.values(food).map(f => {
+            return ("" + f).toLowerCase();
+        }).indexOf(searchInput.toLowerCase()) != -1) {
     
         const foodCard = document.createElement("div");
         foodCard.className = "card w-30 m-3";
@@ -46,8 +54,52 @@ function searchFoods() {
         foodDetails.innerText = "Allergens \n" + food.allergens + "\n Description \n" + food.description
         + "\n Wine pairing \n" + name;
         cardBody.appendChild(foodDetails);
-        
-        foodList.append(foodCard);
+
+        itemsList.append(foodCard);
+
+        }
     }
 }
+
+function searchWines() {
+
+    for (let wine of allWines) {
+
+        let searchInput = document.getElementById("search_input").value;
+    
+        if (Object.values(wine).map(f => {
+            return ("" + f).toLowerCase();
+        }).indexOf(searchInput.toLowerCase()) != -1) {
+
+        const wineCard = document.createElement("div");
+        wineCard.className = "card w-30 m-3";
+    
+        const cardBody = document.createElement("div");
+        cardBody.className = "card-body";
+        wineCard.appendChild(cardBody);
+    
+        const wineName = document.createElement("h5");
+        wineName.className = "card-title";
+        wineName.innerText = (wine.name).toUpperCase();
+        cardBody.appendChild(wineName);
+    
+        const wineDetails = document.createElement("p");
+        wineDetails.className = "card-details";
+        let grape = "Grape \n";
+        let description = "\n Description \n";
+        let tastingNotes = "\n Tasting Notes \n";
+        wineDetails.innerText = grape + wine.grape + description + wine.description
+        + tastingNotes + wine.tastingNotes;
+        cardBody.appendChild(wineDetails);
+       
+        itemsList.append(wineCard);
+    }
+}
+}
+function clearSearches() {
+    itemsList.innerHTML = "";
+}
+
+
+
 
