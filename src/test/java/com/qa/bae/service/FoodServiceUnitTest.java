@@ -87,15 +87,16 @@ public class FoodServiceUnitTest {
 	@Test
 	public void updateFoodTest() throws FoodNotFoundException {
 	
-		Food newFood = new Food("Food Name", "Allergens", "Description", 2);
-		newFood.setId(this.id);
+		Food food = new Food("Name", "Allergens", "Description", 1);
+		food.setId(this.id);
+		food.setLikes(food.getLikes() +1);
 
-		when(this.repo.findById(this.id)).thenReturn(Optional.of(newFood));
-		when(this.repo.save(newFood)).thenReturn(newFood);
+		when(this.repo.findById(this.id)).thenReturn(Optional.of(food));
+		when(this.repo.saveAndFlush(food)).thenReturn(food);
 
-		assertEquals(newFood, this.service.updateFood(newFood, this.id));
+		assertEquals(food.getLikes() + 1, this.service.updateFood(food, this.id).getLikes());
 
 		verify(this.repo, times(1)).findById(1L);
-		verify(this.repo, times(1)).save(newFood);
+		verify(this.repo, times(1)).save(food);
 	}
 }

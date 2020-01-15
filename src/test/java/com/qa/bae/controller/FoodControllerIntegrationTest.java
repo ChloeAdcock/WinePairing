@@ -78,10 +78,13 @@ public class FoodControllerIntegrationTest {
 	
 	@Test
 	public void testUpdateFood() throws Exception {
-		Food newFood = new Food("test name", "test allergens", "test description", 1); 
-		Food updatedFood = new Food(newFood.getName(), newFood.getAllergens(), newFood.getDescription(), 
+		Food newFood = new Food("Test name", "Test allergens", "Test description", 1);
+		int newLikes = newFood.getLikes();
+		newLikes++;
+		Food updatedFood = new Food(newFood.getName(), newFood.getAllergens(), newFood.getDescription(),
 				newFood.getLikes());
-		updatedFood.setId(this.id);
+		updatedFood.setLikes(newLikes);
+		updatedFood.setId(this.testFoodWithID.getId());
 
 		String result = this.mock
 				.perform(request(HttpMethod.PUT, "/food/updateFood/?id=" + this.id).accept(MediaType.APPLICATION_JSON)

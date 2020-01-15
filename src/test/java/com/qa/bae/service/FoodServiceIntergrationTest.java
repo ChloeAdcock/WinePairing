@@ -59,8 +59,11 @@ public class FoodServiceIntergrationTest {
 	@Test
 	public void testUpdateFood() throws FoodNotFoundException {
 		Food newFood = new Food("Test name", "Test allergens", "Test description", 1);
+		int newLikes = newFood.getLikes();
+		newLikes++;
 		Food updatedFood = new Food(newFood.getName(), newFood.getAllergens(), newFood.getDescription(),
 				newFood.getLikes());
+		updatedFood.setLikes(newLikes);
 		updatedFood.setId(this.testFoodWithID.getId());
 
 		assertThat(this.foodService.updateFood(newFood, this.testFoodWithID.getId())).isEqualTo(updatedFood);

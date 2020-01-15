@@ -83,9 +83,12 @@ public class WineControllerIntegrationTest {
 	@Test
 	public void testUpdateWine() throws Exception {
 		Wine newWine = new Wine("test name", "test grape", "test description", "test tasting", 1);
-		Wine updatedWine = new Wine(newWine.getName(), newWine.getGrape(), newWine.getDescription(), 
+		int newLikes = newWine.getLikes();
+		newLikes++;
+		Wine updatedWine = new Wine(newWine.getName(), newWine.getGrape(), newWine.getDescription(),
 				newWine.getTastingNotes(), newWine.getLikes());
-		updatedWine.setId(this.id);
+		updatedWine.setLikes(newLikes);
+		updatedWine.setId(this.testWineWithID.getId());
 
 		String result = this.mock
 				.perform(request(HttpMethod.PUT, "/wine/updateWine/?id=" + this.id).accept(MediaType.APPLICATION_JSON)
