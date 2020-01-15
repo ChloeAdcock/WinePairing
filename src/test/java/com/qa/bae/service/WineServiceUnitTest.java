@@ -87,23 +87,12 @@ public class WineServiceUnitTest {
 	
 	@Test
 	public void updateWineTest() throws WineNotFoundException {
-	
-		Wine newWine = new Wine("Wine Name", "Grape", "Description", "Teasting notes", 2);
 		
-		int newLikes = newWine.getLikes();
-		newLikes++;
-		Wine updatedWine = new Wine(newWine.getName(), newWine.getGrape(), newWine.getDescription(),
-				newWine.getTastingNotes(), newWine.getLikes());
-		updatedWine.setLikes(newLikes);
-		updatedWine.setId(this.testWineWithId.getId());
-
-		when(this.repo.findById(this.id)).thenReturn(Optional.of(newWine));
-		when(this.repo.save(newWine)).thenReturn(updatedWine);
-
-		assertEquals(updatedWine, this.service.updateWine(newWine, this.id));
-
-		verify(this.repo, times(1)).findById(1L);
-		verify(this.repo, times(1)).save(newWine);
+	   Wine newWine = new Wine("Wine Name", "Grape", "Description", "Teasting notes", 0);
+	   newWine.setId(1l);
+	   when(this.repo.saveAndFlush(newWine)).thenReturn(newWine);
+	   assertEquals(newWine.getLikes()+1, this.service.updateWine(newWine).getLikes());
+	   verify(this.repo, times(1)).saveAndFlush(newWine);
 	}
 }
 

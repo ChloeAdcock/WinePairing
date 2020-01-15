@@ -53,6 +53,6 @@ public class WineController {
 	
 	@PutMapping("/updateWine")
 	public Wine updateWine(@PathParam("id") Long id, @RequestBody Wine wine) throws WineNotFoundException {
-		return this.wineService.updateWine(wine, id);
+		return this.wineService.updateWine(wine);
 	}
 }

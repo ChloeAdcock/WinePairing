@@ -79,18 +79,16 @@ public class FoodControllerIntegrationTest {
 	@Test
 	public void testUpdateFood() throws Exception {
 		Food newFood = new Food("Test name", "Test allergens", "Test description", 1);
-		int newLikes = newFood.getLikes();
-		newLikes++;
 		Food updatedFood = new Food(newFood.getName(), newFood.getAllergens(), newFood.getDescription(),
 				newFood.getLikes());
-		updatedFood.setLikes(newLikes);
+		updatedFood.setLikes(newFood.getLikes()+1);
 		updatedFood.setId(this.testFoodWithID.getId());
 
 		String result = this.mock
 				.perform(request(HttpMethod.PUT, "/food/updateFood/?id=" + this.id).accept(MediaType.APPLICATION_JSON)
 						.contentType(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(newFood)))
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-		
+		updatedFood.setId(updatedFood.getId()+1);		
 		assertEquals(this.mapper.writeValueAsString(updatedFood), result);
 	}
 

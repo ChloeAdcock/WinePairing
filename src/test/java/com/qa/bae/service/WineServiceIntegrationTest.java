@@ -59,13 +59,9 @@ public class WineServiceIntegrationTest {
 	@Test
 	public void testUpdateWine() throws WineNotFoundException {
 		Wine newWine = new Wine("test name", "test grape", "test description", "test tasting", 1);
-		int newLikes = newWine.getLikes();
-		newLikes++;
-		Wine updatedWine = new Wine(newWine.getName(), newWine.getGrape(), newWine.getDescription(),
-				newWine.getTastingNotes(), newWine.getLikes());
-		updatedWine.setLikes(newLikes);
-		updatedWine.setId(this.testWineWithID.getId());
+		Wine updatedWine = new Wine();
+		updatedWine.setLikes(newWine.getLikes()+1);
 
-		assertThat(this.wineService.updateWine(newWine, this.testWineWithID.getId())).isEqualTo(updatedWine);
+		assertThat(this.wineService.updateWine(newWine).getLikes()).isEqualTo(updatedWine.getLikes());
 	}
 }

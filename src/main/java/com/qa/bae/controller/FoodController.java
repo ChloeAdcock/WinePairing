@@ -55,6 +55,6 @@ public class FoodController {
 	
 	@PutMapping("/updateFood")
 	public Food updateFood(@PathParam("id") Long id, @RequestBody Food food) throws FoodNotFoundException {
-		return this.foodService.updateFood(food, id);
+		return this.foodService.updateFood(food);
 	}
 }

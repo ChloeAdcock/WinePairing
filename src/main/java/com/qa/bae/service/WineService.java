@@ -43,15 +43,8 @@ public class WineService {
 		return this.wineRepo.findById(id).orElseThrow(() -> new WineNotFoundException());
 	}
 
-	public Wine updateWine(Wine wine, Long id) throws WineNotFoundException {
-		Wine toUpdate = findWineById(id);
-		toUpdate.setName(wine.getName());
-		toUpdate.setGrape(wine.getGrape());
-		toUpdate.setDescription(wine.getDescription());
-		toUpdate.setTastingNotes(wine.getTastingNotes());
-		int newLikes = wine.getLikes();
-		newLikes++;
-		toUpdate.setLikes(newLikes);
-		return this.wineRepo.saveAndFlush(toUpdate);
-	}
+	public Wine updateWine(Wine wine) {
+		   wine.setLikes(wine.getLikes()+1);
+		   return this.wineRepo.saveAndFlush(wine);
+		}
 }

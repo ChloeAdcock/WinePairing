@@ -90,10 +90,10 @@ public class FoodControllerUnitTest {
 				newFood.getLikes());
 		updatedFood.setId(this.id);
 
-		when(this.service.updateFood(newFood, this.id)).thenReturn(updatedFood);
+		when(this.service.updateFood(newFood)).thenReturn(updatedFood);
 
 		assertEquals(updatedFood, this.controller.updateFood(this.id, newFood));
 
-		verify(this.service, times(1)).updateFood(newFood, this.id);
+		verify(this.service, times(1)).updateFood(newFood);
 	}
 }

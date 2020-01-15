@@ -38,13 +38,9 @@ public class FoodService {
 				() -> new FoodNotFoundException());
 	}
 	
-	public Food updateFood(Food food, Long id) throws FoodNotFoundException {
-		Food toUpdate = findFoodByID(id);
-		toUpdate.setName(food.getName());
-		toUpdate.setAllergens(food.getAllergens());
-		toUpdate.setDescription(food.getDescription());
-		toUpdate.setLikes(food.getLikes() + 1);
-		return this.foodRepo.saveAndFlush(toUpdate);
+	public Food updateFood(Food food) throws FoodNotFoundException {
+		   food.setLikes(food.getLikes()+1);
+		   return this.foodRepo.saveAndFlush(food);
 	}
 }
 

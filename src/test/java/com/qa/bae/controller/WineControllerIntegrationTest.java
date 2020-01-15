@@ -83,18 +83,16 @@ public class WineControllerIntegrationTest {
 	@Test
 	public void testUpdateWine() throws Exception {
 		Wine newWine = new Wine("test name", "test grape", "test description", "test tasting", 1);
-		int newLikes = newWine.getLikes();
-		newLikes++;
 		Wine updatedWine = new Wine(newWine.getName(), newWine.getGrape(), newWine.getDescription(),
 				newWine.getTastingNotes(), newWine.getLikes());
-		updatedWine.setLikes(newLikes);
+		updatedWine.setLikes(newWine.getLikes()+1);
 		updatedWine.setId(this.testWineWithID.getId());
 
 		String result = this.mock
 				.perform(request(HttpMethod.PUT, "/wine/updateWine/?id=" + this.id).accept(MediaType.APPLICATION_JSON)
 						.contentType(MediaType.APPLICATION_JSON).content(this.mapper.writeValueAsString(newWine)))
-				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
-		
+				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();	
+		updatedWine.setId(updatedWine.getId()+1);
 		assertEquals(this.mapper.writeValueAsString(updatedWine), result);
 	}
 

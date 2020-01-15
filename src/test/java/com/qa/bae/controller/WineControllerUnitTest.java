@@ -90,10 +90,10 @@ public class WineControllerUnitTest {
 				newWine.getTastingNotes(), newWine.getLikes());
 		updatedWine.setId(this.id);
 
-		when(this.service.updateWine(newWine, this.id)).thenReturn(updatedWine);
+		when(this.service.updateWine(newWine)).thenReturn(updatedWine);
 
 		assertEquals(updatedWine, this.controller.updateWine(this.id, newWine));
 
-		verify(this.service, times(1)).updateWine(newWine, this.id);
+		verify(this.service, times(1)).updateWine(newWine);
 	}
 }

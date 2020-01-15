@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qa.bae.domain.Food;
+import com.qa.bae.domain.Wine;
 import com.qa.bae.repo.FoodRepository;
 
 @RunWith(SpringRunner.class)
@@ -59,13 +60,9 @@ public class FoodServiceIntergrationTest {
 	@Test
 	public void testUpdateFood() throws FoodNotFoundException {
 		Food newFood = new Food("Test name", "Test allergens", "Test description", 1);
-		int newLikes = newFood.getLikes();
-		newLikes++;
-		Food updatedFood = new Food(newFood.getName(), newFood.getAllergens(), newFood.getDescription(),
-				newFood.getLikes());
-		updatedFood.setLikes(newLikes);
-		updatedFood.setId(this.testFoodWithID.getId());
+		Food updatedFood = new Food();
+		updatedFood.setLikes(newFood.getLikes()+1);
 
-		assertThat(this.foodService.updateFood(newFood, this.testFoodWithID.getId())).isEqualTo(updatedFood);
+		assertThat(this.foodService.updateFood(newFood).getLikes()).isEqualTo(updatedFood.getLikes());
 	}
 }
