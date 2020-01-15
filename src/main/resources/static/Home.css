@@ -46,4 +46,19 @@ button {
   width: 100%;
 }
 
+#required {
+  border-color: red;
+}
+
+#requiredText {
+  color: red;
+}
+
+#foodNameHelp {
+  color: #6c757d;
+}
+
+#wineNameHelp {
+  color: #6c757d;
+}
 
