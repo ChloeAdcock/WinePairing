@@ -17,8 +17,10 @@ import org.mockito.Mock;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qa.bae.domain.Food;
+import com.qa.bae.domain.Wine;
 import com.qa.bae.service.FoodNotFoundException;
 import com.qa.bae.service.FoodService;
+import com.qa.bae.service.WineNotFoundException;
 
 @RunWith(SpringRunner.class)
 public class FoodControllerUnitTest {
@@ -32,28 +34,26 @@ public class FoodControllerUnitTest {
 	private List<Food> foodList;
 	
 	private Food testFood;
+	private Wine testWine;
 
 	private Food testFoodWithId;
+	private Wine testWineWithId;
 
 	final long id = 1L;
+	final long wineId = 1L;
 	
 	@Before
 	public void start() {
 		this.foodList = new ArrayList<>();
 		this.foodList.add(testFood);
 		this.testFood = new Food("test name", "test allergens", "test description", 1); 
+		this.testWine = new Wine("test name", "test grape", "test description", "test tasting", 1);
 		this.testFoodWithId = new Food(testFood.getName(), testFood.getAllergens(), 
 				testFood.getDescription(), testFood.getLikes());
+		this.testWineWithId = new Wine(testWine.getName(), testWine.getGrape(), 
+				testWine.getDescription(), testWine.getTastingNotes(), testWine.getLikes());
+		this.testWineWithId.setId(id);
 		this.testFoodWithId.setId(id);
-	}
-	
-	@Test
-	public void createFoodTest() {
-		when(this.service.addNewFood(testFood)).thenReturn(testFoodWithId);
-
-		assertEquals(this.testFoodWithId, this.controller.addNewFood(testFood));
-
-		verify(this.service, times(1)).addNewFood(this.testFood);
 	}
 	
 	@Test

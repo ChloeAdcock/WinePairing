@@ -21,18 +21,15 @@ function showAllFoods() {
         const foodCard = document.createElement("div");
         foodCard.className = "card w-30 m-3";
 
-        const deleteButton = document.createElement("button");
-        deleteButton.className = "btn btn-default btn-sm far fa-trash-alt";
-        deleteButton.value = food.id;
-        foodCard.appendChild(deleteButton);
+        let deleteFoodButton = document.createElement("button");
+        deleteFoodButton.className = "btn btn-default btn-sm far fa-trash-alt";
+        deleteFoodButton.id = food.id;
+        foodCard.appendChild(deleteFoodButton);
+        deleteFoodButton.addEventListener('click', () => deleteFood(food.id));
     
         const cardBody = document.createElement("div");
         cardBody.className = "card-body";
         foodCard.appendChild(cardBody);
-
-        const likeButton = document.createElement("button");
-        likeButton.className = "btn btn-default btn-sm far fa-thumbs-up";
-        foodCard.appendChild(likeButton);
     
         const foodName = document.createElement("h5");
         foodName.className = "card-title";
@@ -41,38 +38,58 @@ function showAllFoods() {
     
         const foodDetails = document.createElement("p");
         foodDetails.className = "card-details"
+        let name = food.wine ?  food.wine.name :  'None';
         foodDetails.innerText = "Allergens \n" + food.allergens + "\n Description \n" + food.description
-        + "\n Wine pairing \n" + food.wine.name;
+        + "\n Wine pairing \n" + name;
         cardBody.appendChild(foodDetails);
+
+        const numLikes = document.createElement("p");
+        numLikes.className = "numLikes";
+        numLikes.innerText = food.likes;
+        foodCard.appendChild(numLikes);
+
+        let likeFoodButton = document.createElement("button");
+        likeFoodButton.className = "btn btn-default btn-sm far fa-thumbs-up";
+        likeFoodButton.id = food.id;
+        foodCard.appendChild(likeFoodButton);
+        likeFoodButton.addEventListener('click', () => updateFoodLikes(food, food.id));
     
         foodList.append(foodCard);
     }
     
 }
 
-function deleteFood() {
-    axios.delete("http://localhost:8080/winepairingapp/deleteFood")
+function deleteFood(id) {
+    axios.delete("http://localhost:" + PORT + "/food/deleteFood/" + id)
     .then ((response) => {
-        removeFood(response.data);
+        console.log("Delete food with ID of " + id + ": " + response.data);
+        location.reload();
     }).catch ((error) => {
         console.error(error);
     })
 }
 
-function removeFood() {
 
-}
+function updateFoodLikes(foodObj, id) {
 
-function likeFood() {
-    axios.put("http://localhost:8080/winepairingapp/updateFood")
+    let data = {
+        "name": foodObj.name,
+        "allergens": foodObj.allergens,
+        "description": foodObj.description,
+        "likes": foodObj.likes,
+        "wine": {
+            "id": foodObj.wine.id
+        }
+    }
+
+    console.log(id);
+    console.log("Like food: " + JSON.stringify(data));
+
+    axios.put("http://localhost:" + PORT + "/food/updateFood?id=" + id, data)
     .then ((response) => {
-        addLike(response.data);
+        location.reload();
     }).catch ((error) => {
         console.error(error);
     })
-}
-
-function addLike() {
-    
 }
 

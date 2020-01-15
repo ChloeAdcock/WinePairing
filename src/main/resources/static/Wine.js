@@ -21,19 +21,15 @@ function showAllWines() {
         const wineCard = document.createElement("div");
         wineCard.className = "card w-30 m-3";
 
-        const deleteButton = document.createElement("button");
-        deleteButton.className = "btn btn-default btn-sm far fa-trash-alt";
-        deleteButton.value = wine.id;
-        deleteButton.addEventListener("click", deleteWine());
-        wineCard.appendChild(deleteButton);
+        let deleteWineButton = document.createElement("button");
+        deleteWineButton.className = "btn btn-default btn-sm far fa-trash-alt";
+        deleteWineButton.id = wine.id;
+        wineCard.appendChild(deleteWineButton);
+        deleteWineButton.addEventListener('click', () => deleteWine(wine.id));
     
         const cardBody = document.createElement("div");
         cardBody.className = "card-body";
         wineCard.appendChild(cardBody);
-
-        const likeButton = document.createElement("button");
-        likeButton.className = "btn btn-default btn-sm far fa-thumbs-up";
-        wineCard.appendChild(likeButton);
     
         const wineName = document.createElement("h5");
         wineName.className = "card-title";
@@ -41,9 +37,7 @@ function showAllWines() {
         cardBody.appendChild(wineName);
     
         const wineDetails = document.createElement("p");
-        (wine.grape).className = "card-details";
-        (wine.description).className = "card-details";
-        (wine.tastingNotes).className = "card-details";
+        wineDetails.className = "card-details";
         let grape = "Grape \n";
         let description = "\n Description \n";
         let tastingNotes = "\n Tasting Notes \n";
@@ -53,25 +47,49 @@ function showAllWines() {
         wineDetails.innerText = grape + wine.grape + description + wine.description
         + tastingNotes + wine.tastingNotes;
         cardBody.appendChild(wineDetails);
+
+        const numLikes = document.createElement("p");
+        numLikes.className = "numLikes";
+        numLikes.innerText = wine.likes;
+        wineCard.appendChild(numLikes);
+
+        let likeWineButton = document.createElement("button");
+        likeWineButton.className = "btn btn-default btn-sm far fa-thumbs-up";
+        likeWineButton.id = wine.id;
+        wineCard.appendChild(likeWineButton);
+        likeWineButton.addEventListener('click', () => updateWineLikes(wine, wine.id));
        
         wineList.append(wineCard);
     }
     
 }
 
-function deleteWine() {
-    axios.delete("http://localhost:" + PORT + "/wine/deleteWine/{" + deleteButton.value + "}")
+function deleteWine(id) {
+    axios.delete("http://localhost:" + PORT + "/wine/deleteWine/" + id )
     .then ((response) => {
-        removeWine("Delete wine with ID of " + deleteButton.value + ": " + response.data);
+        console.log("Delete wine with ID of " + id + ": " + response.data);
+        location.reload();
     }).catch ((error) => {
         console.error(error);
     })
 }
 
-function likeWine() {
-    axios.put("http://localhost:8080/winepairingapp/updateWine")
+function updateWineLikes(wineObj, id) {
+
+    let data = {
+        "name": wineObj.name,
+        "grape": wineObj.grape,
+        "description": wineObj.description,
+        "tastingNotes": wineObj.tastingNotes,
+        "likes": wineObj.likes
+    }
+
+    console.log(id);
+    console.log("Like wine: " + JSON.stringify(data));
+
+    axios.put("http://localhost:" + PORT + "/wine/updateWine?id=" + id, data)
     .then ((response) => {
-        addLike(response.data);
+        location.reload();
     }).catch ((error) => {
         console.error(error);
     })

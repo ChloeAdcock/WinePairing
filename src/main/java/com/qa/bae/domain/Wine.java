@@ -1,11 +1,10 @@
 package com.qa.bae.domain;
 
-import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -25,7 +24,7 @@ public class Wine {
 	private String description;
 	private String tastingNotes;
 	private int likes;
-    
+	
 	public Wine() {
 		super();
 	}
