@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.qa.bae.domain.Food;
+import com.qa.bae.domain.Wine;
 import com.qa.bae.repo.FoodRepository;
 
 @Service
@@ -38,9 +39,10 @@ public class FoodService {
 				() -> new FoodNotFoundException());
 	}
 	
-	public Food updateFood(Food food) throws FoodNotFoundException {
-		   food.setLikes(food.getLikes()+1);
-		   return this.foodRepo.saveAndFlush(food);
+	public Food updateFood(Long id) throws FoodNotFoundException {
+		Food food = this.findFoodByID(id);
+		food.setLikes(food.getLikes()+1);
+		return this.foodRepo.saveAndFlush(food);
 	}
 }
 

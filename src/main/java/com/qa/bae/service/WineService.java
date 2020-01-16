@@ -12,7 +12,7 @@ import com.qa.bae.service.FoodService;
 public class WineService {
 
 	private WineRepository wineRepo;
-	
+
 	private FoodService foodService;
 
 	public WineService(WineRepository wineRepo, FoodService foodService) {
@@ -43,8 +43,9 @@ public class WineService {
 		return this.wineRepo.findById(id).orElseThrow(() -> new WineNotFoundException());
 	}
 
-	public Wine updateWine(Wine wine) {
-		   wine.setLikes(wine.getLikes()+1);
-		   return this.wineRepo.saveAndFlush(wine);
-		}
+	public Wine updateWine(Long id) throws WineNotFoundException {
+		Wine wine = this.findWineById(id);
+		wine.setLikes(wine.getLikes() + 1);
+		return this.wineRepo.saveAndFlush(wine);
+	}
 }

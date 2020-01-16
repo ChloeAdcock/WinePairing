@@ -37,7 +37,6 @@ public class WineServiceUnitTest {
 	private List<Wine> wineList;
 	
 	private Wine testWine;
-	private Food testFood;
 
 	private Wine testWineWithId;
 
@@ -88,11 +87,10 @@ public class WineServiceUnitTest {
 	@Test
 	public void updateWineTest() throws WineNotFoundException {
 		
-	   Wine newWine = new Wine("Wine Name", "Grape", "Description", "Teasting notes", 0);
-	   newWine.setId(1l);
-	   when(this.repo.saveAndFlush(newWine)).thenReturn(newWine);
-	   assertEquals(newWine.getLikes()+1, this.service.updateWine(newWine).getLikes());
-	   verify(this.repo, times(1)).saveAndFlush(newWine);
+	   when(this.repo.findById(this.testWine.getId())).thenReturn(Optional.of(this.testWineWithId));
+	   when(this.repo.saveAndFlush(testWineWithId)).thenReturn(testWineWithId);
+	   assertEquals((testWineWithId.getLikes())+1, this.service.updateWine(testWine.getId()).getLikes());
+	   verify(this.repo, times(1)).saveAndFlush(testWineWithId);
 	}
 }
 
