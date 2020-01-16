@@ -15,10 +15,6 @@
 	<description>Wine Pairing Application</description>
 	<packaging>war</packaging>
 
-	<properties>
-		<java.version>13</java.version>
-	</properties>
-
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
