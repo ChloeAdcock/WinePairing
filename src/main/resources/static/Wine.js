@@ -36,17 +36,38 @@ function showAllWines() {
         wineName.innerText = (wine.name).toUpperCase();
         cardBody.appendChild(wineName);
     
-        const wineDetails = document.createElement("p");
-        wineDetails.className = "card-details";
-        let grape = "Grape \n";
-        let description = "\n Description \n";
-        let tastingNotes = "\n Tasting Notes \n";
-        grape.className = "cardVariables";
-        description.className = "cardVariables";
-        tastingNotes.className = "cardVariables";
-        wineDetails.innerText = grape + wine.grape + description + wine.description
-        + tastingNotes + wine.tastingNotes;
+        const wineDetails = document.createElement("div");
         cardBody.appendChild(wineDetails);
+
+        let grapeP = document.createElement("p");
+        grapeP.innerText = "Grape"
+        grapeP.id = "variableName";
+        wineDetails.appendChild(grapeP);
+
+        let grape = document.createElement("p");
+        grape.innerText = wine.grape;
+        grape.className = "card-details"
+        wineDetails.appendChild(grape);
+
+        let descriptionP = document.createElement("p");
+        descriptionP.innerText = "Description";
+        descriptionP.id = "variableName";
+        wineDetails.appendChild(descriptionP);
+
+        let description = document.createElement("p");
+        description.innerText = wine.description;
+        descriptionP.className = "card-details"
+        wineDetails.appendChild(description);
+
+        let notesP = document.createElement("p");
+        notesP.innerText = "Tasting notes";
+        notesP.id = "variableName";
+        wineDetails.appendChild(notesP);
+
+        let notes = document.createElement("p");
+        notes.innerText = wine.tastingNotes;
+        notes.className = "card-details";
+        wineDetails.appendChild(notes);
 
         const numLikes = document.createElement("p");
         numLikes.className = "numLikes";

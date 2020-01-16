@@ -87,12 +87,6 @@ public class Wine {
 	}
 
 	@Override
-	public String toString() {
-		return "Wine [id=" + id + ", name=" + name + ", grape=" + grape + ", description=" + description
-				+ ", tastingNotes=" + tastingNotes + ", likes=" + likes + "]";
-	}
-
-	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
@@ -147,6 +141,12 @@ public class Wine {
 		else if (!tastingNotes.equals(other.tastingNotes))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Wine [id=" + id + ", name=" + name + ", grape=" + grape + ", description=" + description
+				+ ", tastingNotes=" + tastingNotes + ", likes=" + likes + "]";
 	}
 
 }

@@ -91,12 +91,7 @@ public class Food {
 	public void setWine(Wine wine) {
 		this.wine = wine;
 	}
-
-	@Override
-	public String toString() {
-		return "Food [id=" + id + ", name=" + name + ", allergens=" + allergens + ", description=" + description
-				+ ", likes=" + likes + ", wine=" + wine + "]";
-	}
+	
 
 	@Override
 	public int hashCode() {
@@ -153,5 +148,11 @@ public class Food {
 		else if (!wine.equals(other.wine))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Food [id=" + id + ", name=" + name + ", allergens=" + allergens + ", description=" + description
+				+ ", likes=" + likes + ", wine=" + wine + "]";
 	}
 }

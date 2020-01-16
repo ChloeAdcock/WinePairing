@@ -27,6 +27,8 @@ public class WineServiceIntegrationTest {
 	
 	private Wine testWine;
 	
+	private Long id;
+	
 	private Wine testWineWithID;
 	
 	@Before
@@ -34,6 +36,7 @@ public class WineServiceIntegrationTest {
 		this.testWine = new Wine("test name", "test grape", "test description", "test tasting", 1);
 		this.wineRepo.deleteAll();
 		this.testWineWithID = this.wineRepo.save(this.testWine);
+		this.id = this.testWineWithID.getId();
 	}
 	
 	@Test
@@ -59,9 +62,10 @@ public class WineServiceIntegrationTest {
 	@Test
 	public void testUpdateWine() throws WineNotFoundException {
 		Wine newWine = new Wine("test name", "test grape", "test description", "test tasting", 1);
+		newWine.setId(id);
 		Wine updatedWine = new Wine();
 		updatedWine.setLikes(newWine.getLikes()+1);
 
-		assertThat(this.wineService.updateWine(newWine).getLikes()).isEqualTo(updatedWine.getLikes());
+		assertThat(this.wineService.updateWine(newWine.getId()).getLikes()).isEqualTo(updatedWine.getLikes());
 	}
 }

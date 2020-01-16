@@ -31,7 +31,6 @@ function searchFoods() {
     for (let food of allFoods) {
 
         let searchInput = document.getElementById("search_input").value;
-        debugger;
         if (Object.values(food).map(f => {
             return ("" + f).toLowerCase();
         }).indexOf(searchInput.toLowerCase()) != -1) {
@@ -48,12 +47,39 @@ function searchFoods() {
         foodName.innerText = (food.name).toUpperCase();
         cardBody.appendChild(foodName);
     
-        const foodDetails = document.createElement("p");
-        foodDetails.className = "card-details"
-        let name = food.wine ?  food.wine.name :  'None';
-        foodDetails.innerText = "Allergens \n" + food.allergens + "\n Description \n" + food.description
-        + "\n Wine pairing \n" + name;
+        const foodDetails = document.createElement("div");
         cardBody.appendChild(foodDetails);
+
+        let allergensP = document.createElement("p");
+        allergensP.innerText = "Allergens"
+        allergensP.id = "variableName";
+        foodDetails.appendChild(allergensP);
+
+        let allergens = document.createElement("p");
+        allergens.innerText = food.allergens;
+        allergens.className = "card-details";
+        foodDetails.appendChild(allergens);
+
+        let descriptionP = document.createElement("p");
+        descriptionP.innerText = "Description";
+        descriptionP.id = "variableName";
+        foodDetails.appendChild(descriptionP);
+
+        let description = document.createElement("p");
+        description.innerText = food.description;
+        description.className = "card-details";
+        foodDetails.appendChild(description);
+
+        let wineP = document.createElement("p");
+        wineP.innerText = "Wine pairing";
+        wineP.id = "variableName";
+        foodDetails.appendChild(wineP);
+
+        let wine = document.createElement("p");
+        let name = food.wine ? food.wine.name : "None";
+        wine.innerText = name;
+        wine.className = "card-details";
+        foodDetails.appendChild(wine);
 
         itemsList.append(foodCard);
 
@@ -83,14 +109,38 @@ function searchWines() {
         wineName.innerText = (wine.name).toUpperCase();
         cardBody.appendChild(wineName);
     
-        const wineDetails = document.createElement("p");
-        wineDetails.className = "card-details";
-        let grape = "Grape \n";
-        let description = "\n Description \n";
-        let tastingNotes = "\n Tasting Notes \n";
-        wineDetails.innerText = grape + wine.grape + description + wine.description
-        + tastingNotes + wine.tastingNotes;
+        const wineDetails = document.createElement("div");
         cardBody.appendChild(wineDetails);
+
+        let grapeP = document.createElement("p");
+        grapeP.innerText = "Grape"
+        grapeP.id = "variableName";
+        wineDetails.appendChild(grapeP);
+
+        let grape = document.createElement("p");
+        grape.innerText = wine.grape;
+        grape.className = "card-details"
+        wineDetails.appendChild(grape);
+
+        let descriptionP = document.createElement("p");
+        descriptionP.innerText = "Description";
+        descriptionP.id = "variableName";
+        wineDetails.appendChild(descriptionP);
+
+        let description = document.createElement("p");
+        description.innerText = wine.description;
+        descriptionP.className = "card-details"
+        wineDetails.appendChild(description);
+
+        let notesP = document.createElement("p");
+        notesP.innerText = "Tasting notes";
+        notesP.id = "variableName";
+        wineDetails.appendChild(notesP);
+
+        let notes = document.createElement("p");
+        notes.innerText = wine.tastingNotes;
+        notes.className = "card-details";
+        wineDetails.appendChild(notes);
        
         itemsList.append(wineCard);
     }

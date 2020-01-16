@@ -46,19 +46,24 @@ button {
   width: 100%;
 }
 
-#required {
-  border-color: red;
+.required {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background-clip: padding-box;
+  border: 1px solid red;
+  border-radius: .25rem;
 }
 
-#requiredText {
+.requiredText {
   color: red;
 }
 
-#foodNameHelp {
-  color: #6c757d;
-}
-
-#wineNameHelp {
+.form-text {
   color: #6c757d;
 }
 

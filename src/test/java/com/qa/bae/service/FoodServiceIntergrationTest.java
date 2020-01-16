@@ -28,6 +28,8 @@ public class FoodServiceIntergrationTest {
 	
 	private Food testFood;
 	
+	private Long id;
+	
 	private Food testFoodWithID;
 	
 	@Before
@@ -35,6 +37,7 @@ public class FoodServiceIntergrationTest {
 		this.testFood = new Food("Test name", "Test allergens", "Test description", 1);
 		this.foodRepo.deleteAll();
 		this.testFoodWithID = this.foodRepo.save(this.testFood);
+		this.id = this.testFoodWithID.getId();
 	}
 	
 	@Test
@@ -60,9 +63,10 @@ public class FoodServiceIntergrationTest {
 	@Test
 	public void testUpdateFood() throws FoodNotFoundException {
 		Food newFood = new Food("Test name", "Test allergens", "Test description", 1);
+		newFood.setId(id);
 		Food updatedFood = new Food();
 		updatedFood.setLikes(newFood.getLikes()+1);
 
-		assertThat(this.foodService.updateFood(newFood).getLikes()).isEqualTo(updatedFood.getLikes());
+		assertThat(this.foodService.updateFood(newFood.getId()).getLikes()).isEqualTo(updatedFood.getLikes());
 	}
 }

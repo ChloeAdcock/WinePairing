@@ -5,8 +5,8 @@ function wineRequired(){
     let nameText = document.getElementById("wineNameHelp");
     if (nameInput.value.length == 0) {
         nameText.innerText = "Please enter a wine name";
-        nameInput.id = "required";
-        nameText.id = "requiredText";
+        nameInput.className = "required";
+        nameText.className = "requiredText";
         return false;
     }
     return true;
@@ -26,26 +26,26 @@ function maxLengthWine() {
     let valid = true;
 
     if (nameInput.value.length > 100) {
-        nameInput.id = "required";
-        nameText.id = "requiredText";
+        nameInput.className = "required";
+        nameText.className = "requiredText";
         valid = valid && false;
     }
     
     if (grapeInput.value.length > 100) {
-        grapeInput.id = "required";
-        grapeText.id = "requiredText";
+        grapeInput.className = "required";
+        grapeText.className = "requiredText";
         valid = valid && false;
     }
     
     if (descriptionInput.value.length > 100) {
-        descriptionInput.id = "required";
-        descriptionText.id = "requiredText";
+        descriptionInput.className= "required";
+        descriptionText.className = "requiredText";
         valid = valid && false;
     }
     
     if (tastingNotesInput.value.length > 100) {
-        tastingNotesInput.id = "required";
-        tastingNotesText.id = "requiredText";
+        tastingNotesInput.className = "required";
+        tastingNotesText.className = "requiredText";
         valid = valid && false;
     }
     return valid;
@@ -56,8 +56,8 @@ function foodRequired(){
     let text = document.getElementById("foodNameHelp");
     if (nameInput.value.length == 0) {
         text.innerText = "Please enter a food name";
-        nameInput.id = "required";
-        text.id = "requiredText";
+        nameInput.className = "required";
+        text.className = "requiredText";
         return false;
     }
     return true;
@@ -75,20 +75,20 @@ function maxLengthFood() {
     let valid = true;
 
     if (nameInput.value.length > 100) {
-        nameInput.id = "required";
-        nameText.id = "requiredText";
+        nameInput.className = "required";
+        nameText.className = "requiredText";
         valid = valid && false;
     }
     
     if (allergensInput.value.length > 100) {
-        allergensInput.id = "required";
-        allergensText.id = "requiredText";
+        allergensInput.className = "required";
+        allergensText.className = "requiredText";
         valid = valid && false;
     }
     
     if (descriptionInput.value.length > 100) {
-        descriptionInput.id = "required";
-        descriptionText.id = "requiredText";
+        descriptionInput.className = "required";
+        descriptionText.className = "requiredText";
         valid = valid && false;
     }
     return valid;
