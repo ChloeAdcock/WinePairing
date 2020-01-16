@@ -1,5 +1,3 @@
-const PORT = 8081;
-
 function wineRequired(){
     let nameInput = document.getElementById("inputWineName");
     let nameText = document.getElementById("wineNameHelp");
@@ -108,7 +106,7 @@ function addWine() {
         }
         
         if (wineRequired() == true && maxLengthWine() == true) {
-        axios.post("http://localhost:" + PORT + "/wine/addWine", data)     
+        axios.post("/WinePairing/wine/addWine/", data)     
         .then ((response) => {
             console.log("post wines request: " + data)
             location.reload();
@@ -121,7 +119,7 @@ function addWine() {
 
 let wines = [];
  function getWines() {
-    axios.get("http://localhost:" + PORT + "/wine/getWines")
+    axios.get("/WinePairing/wine/getWines/")
     .then ((response) => {
         wines = response.data;
         console.log("Get wines request: " + wines)
@@ -159,7 +157,7 @@ function addFood() {
     }
     
     if (foodRequired() == true && maxLengthFood() == true) {
-    axios.post("http://localhost:" + PORT + "/food/addFood?id=" + winePairing, data)     
+    axios.post("/WinePairing/food/addFood?id=" + winePairing, data)     
     .then ((response) => {
         console.log("post foods request: " + data)
         location.reload();  

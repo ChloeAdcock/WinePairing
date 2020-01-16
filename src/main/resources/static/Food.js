@@ -1,8 +1,6 @@
-const PORT = 8081;
-
 let allFoods = [];
 function getAllFoods() {
-    axios.get("http://localhost:" + PORT + "/food/getFoods")
+    axios.get("/WinePairing/food/getFoods")
     .then ((response) => {
         allFoods = response.data;
         console.log("Get all foods request: " + allFoods);
@@ -87,7 +85,7 @@ function showAllFoods() {
 }
 
 function deleteFood(id) {
-    axios.delete("http://localhost:" + PORT + "/food/deleteFood/" + id)
+    axios.delete("/WinePairing/food/deleteFood/" + id)
     .then ((response) => {
         console.log("Delete food with ID of " + id + ": " + response.data);
         location.reload();
@@ -112,7 +110,7 @@ function updateFoodLikes(foodObj, id) {
     console.log(id);
     console.log("Like food: " + JSON.stringify(data));
 
-    axios.put("http://localhost:" + PORT + "/food/updateFood?id=" + id, data)
+    axios.put("/WinePairing/food/updateFood?id=" + id, data)
     .then ((response) => {
         location.reload();
     }).catch ((error) => {

@@ -1,8 +1,6 @@
-const PORT = 8081;
-
 let allWines = [];
  function getAllWines() {
-    axios.get("http://localhost:" + PORT + "/wine/getWines")
+    axios.get("/WinePairing/wine/getWines/")
     .then ((response) => {
         allWines = response.data;
         console.log("Get wines request: " + allWines)
@@ -86,7 +84,7 @@ function showAllWines() {
 }
 
 function deleteWine(id) {
-    axios.delete("http://localhost:" + PORT + "/wine/deleteWine/" + id )
+    axios.delete("/WinePairing/wine/deleteWine/" + id )
     .then ((response) => {
         console.log("Delete wine with ID of " + id + ": " + response.data);
         location.reload();
@@ -108,7 +106,7 @@ function updateWineLikes(wineObj, id) {
     console.log(id);
     console.log("Like wine: " + JSON.stringify(data));
 
-    axios.put("http://localhost:" + PORT + "/wine/updateWine?id=" + id, data)
+    axios.put("/WinePairing/wine/updateWine?id=" + id, data)
     .then ((response) => {
         location.reload();
     }).catch ((error) => {

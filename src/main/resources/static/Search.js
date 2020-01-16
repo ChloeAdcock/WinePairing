@@ -1,9 +1,7 @@
-const PORT = 8081;
-
 let allWines = [];
  
 function getAllWines() {
-    axios.get("http://localhost:" + PORT + "/wine/getWines")
+    axios.get("/WinePairing/wine/getWines")
     .then ((response) => {
         allWines = response.data;
         console.log("Get all wines request: " + allWines)
@@ -15,7 +13,7 @@ function getAllWines() {
 let allFoods = [];
 
 function getAllFoods() {
-    axios.get("http://localhost:" + PORT + "/food/getFoods")
+    axios.get("/WinePairing/food/getFoods")
     .then ((response) => {
         allFoods = response.data;
         console.log("Get all foods request: " + allFoods);
