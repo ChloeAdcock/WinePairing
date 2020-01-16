@@ -1,7 +1,5 @@
 package com.qa.bae.Selenium;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-
 import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
@@ -48,7 +46,7 @@ public class AddWine {
 	@Test
 	public void test() throws InterruptedException {
 		
-		this.driver.get("localhost:" + port);
+		this.driver.get("file:///Users/Chloe/Desktop/WinePairing/src/main/resources/static/index.html");
 		
 		HomeWine homePage = PageFactory.initElements(driver, HomeWine.class);
 		homePage.inputWineName(NAME);
