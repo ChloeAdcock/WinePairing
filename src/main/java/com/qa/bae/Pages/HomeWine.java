@@ -17,6 +17,10 @@ public class HomeWine {
 	@FindBy(xpath="/html/body/div/div[1]/form/div[4]/input")
 	private WebElement wineTastingNotes;
 	
+	@FindBy(xpath="/html/body/div/div[1]/form/button")
+	private WebElement addWine;
+
+	
 	public void inputWineName(String input) {
 		this.wineName.sendKeys(input);
 	}
@@ -25,12 +29,15 @@ public class HomeWine {
 		this.wineGrape.sendKeys(input);
 	}
 	
-	public void searchItem(String item) {
-		this.search.sendKeys(item);
+	public void inputWineDescription(String input) {
+		this.wineDescription.sendKeys(input);
 	}
 	
-	public void searchItem(String item) {
-		this.search.sendKeys(item);
+	public void inputTastingNotes(String input) {
+		this.wineTastingNotes.sendKeys(input);
 	}
-
+	
+	public void clickAdd() {
+		this.addWine.click();
+	}
 }
