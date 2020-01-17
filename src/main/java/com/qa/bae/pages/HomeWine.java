@@ -1,4 +1,4 @@
-package com.qa.bae.Pages;
+package com.qa.bae.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -19,6 +19,9 @@ public class HomeWine {
 	
 	@FindBy(xpath="/html/body/div/div[1]/form/button")
 	private WebElement addWine;
+	
+	@FindBy(xpath="/html/body/nav/div/div/ul/li[3]/a")
+	private WebElement gotToWine;
 
 	
 	public void inputWineName(String input) {
@@ -39,5 +42,9 @@ public class HomeWine {
 	
 	public void clickAdd() {
 		this.addWine.click();
+	}
+	
+	public void goToWinePage() {
+		this.gotToWine.click();
 	}
 }

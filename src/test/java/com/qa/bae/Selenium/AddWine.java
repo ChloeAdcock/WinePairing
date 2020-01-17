@@ -12,17 +12,15 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.qa.bae.Pages.HomeWine;
+import com.qa.bae.pages.HomeWine;
+import com.qa.bae.pages.WinePage;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 public class AddWine {
 	
-	@LocalServerPort
-	private int port;
 	private WebDriver driver;
 	
 	
@@ -36,7 +34,6 @@ public class AddWine {
 		
 		System.setProperty("webdriver.chrome.driver", "chromedriver");
 		ChromeOptions options = new ChromeOptions();
-     	options.setHeadless(true);
 		this.driver = new ChromeDriver(options);
 		this.driver.manage().window().maximize();
 		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -46,7 +43,7 @@ public class AddWine {
 	@Test
 	public void test() throws InterruptedException {
 		
-		this.driver.get("file:///Users/Chloe/Desktop/WinePairing/src/main/resources/static/index.html");
+		this.driver.get("http://3.11.106.117:8181/WinePairing/index.html");
 		
 		HomeWine homePage = PageFactory.initElements(driver, HomeWine.class);
 		homePage.inputWineName(NAME);
@@ -59,6 +56,12 @@ public class AddWine {
 		Thread.sleep(500);
 		homePage.clickAdd();
 		Thread.sleep(500);
+		homePage.goToWinePage();
+		Thread.sleep(2000);
+		
+		WinePage winePage = PageFactory.initElements(driver, WinePage.class);
+		winePage.clickLike();
+		Thread.sleep(2000);
 	}
 	
 	@After
