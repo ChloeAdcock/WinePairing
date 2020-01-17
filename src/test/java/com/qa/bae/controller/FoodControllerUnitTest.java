@@ -21,6 +21,7 @@ import com.qa.bae.domain.Wine;
 import com.qa.bae.service.FoodNotFoundException;
 import com.qa.bae.service.FoodService;
 import com.qa.bae.service.WineNotFoundException;
+import com.qa.bae.service.WineService;
 
 @RunWith(SpringRunner.class)
 public class FoodControllerUnitTest {
@@ -30,6 +31,9 @@ public class FoodControllerUnitTest {
 	
 	@Mock
 	private FoodService service;
+	
+	@Mock
+	private WineService wineService;
 	
 	private List<Food> foodList;
 	
@@ -59,7 +63,7 @@ public class FoodControllerUnitTest {
 	@Test
 	public void createFoodTest() throws WineNotFoundException {
 		when(this.service.addNewFood(testFood)).thenReturn(testFoodWithId);
-
+		when(this.wineService.findWineById(wineId)).thenReturn(testWineWithId);
 		assertEquals(this.testFoodWithId, this.controller.addNewFood(testFood, testWineWithId.getId()));
 
 		verify(this.service, times(1)).addNewFood(this.testFood);

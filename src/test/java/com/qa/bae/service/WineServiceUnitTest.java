@@ -28,19 +28,23 @@ public class WineServiceUnitTest {
 	@InjectMocks
 	private WineService service;
 	
-	@InjectMocks
+	@Mock
 	private FoodService foodService;
 	
 	@Mock
 	private WineRepository repo;
 	
 	private List<Wine> wineList;
+	private List<Food> foodList;
 	
 	private Wine testWine;
+	private Food testFood;
 
 	private Wine testWineWithId;
+	private Food testFoodWithId;
 
 	final long id = 1L;
+	final long foodId = 1L;
 	
 	
 	@Before
@@ -52,6 +56,13 @@ public class WineServiceUnitTest {
 		this.testWineWithId = new Wine(testWine.getName(), testWine.getGrape(), 
 				testWine.getDescription(), testWine.getTastingNotes(), testWine.getLikes());
 		this.testWineWithId.setId(id);
+		
+		this.testFood = new Food("test name", "test allergens", "test description", 1); 
+		this.foodList = new ArrayList<>();
+		this.foodList.add(testFood);
+		this.testFoodWithId = new Food(testFood.getName(), testFood.getAllergens(), 
+				testFood.getDescription(), testFood.getLikes());
+		this.testFoodWithId.setId(foodId);
 	}
 	
 	@Test
@@ -67,7 +78,7 @@ public class WineServiceUnitTest {
 	@Test
 	public void deleteWineTest() throws WineNotFoundException {
 		when(this.repo.existsById(id)).thenReturn(true, false);
-
+		when(this.foodService.getAllFood()).thenReturn(this.foodList);
 		this.service.deleteWine(id);
 
 		verify(this.repo, times(1)).deleteById(id);

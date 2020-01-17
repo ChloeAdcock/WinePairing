@@ -41,18 +41,24 @@ public class FoodControllerIntegrationTest {
 	private ObjectMapper mapper = new ObjectMapper();
 	
 	private long id;
+	private long wineId;
 	
 	private Food testFood;
+	private Wine testWine;
 	
 	private Food testFoodWithID;
+	private Wine testWineWithId;
 	
 	@Before
 	public void init() {
 		this.foodRepo.deleteAll();
-		this.wineRepo.save(new Wine("test name", "test grape", "test description", "test tasting", 1));
 		this.testFood = new Food("test name", "test allergens", "test description", 1); 
 		this.testFoodWithID = this.foodRepo.save(this.testFood);
 		this.id = this.testFoodWithID.getId();
+		
+		this.testWine = (new Wine("test name", "test grape", "test description", "test tasting", 1));
+		this.testWineWithId = this.wineRepo.save(this.testWine);
+		this.wineId = this.testWineWithId.getId();
 	}
 	
 	@Test
@@ -68,7 +74,7 @@ public class FoodControllerIntegrationTest {
 	
 	@Test
 	public void testAddNewFood() throws Exception {
-
+		this.testFoodWithID.setWine(this.testWineWithId);
 		String result = this.mock
 				.perform(request(HttpMethod.POST, "/food/addFood?id=" + this.id).contentType(MediaType.APPLICATION_JSON)
 						.content(this.mapper.writeValueAsString(testFood)).accept(MediaType.APPLICATION_JSON))
