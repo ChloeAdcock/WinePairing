@@ -76,7 +76,7 @@ public class FoodControllerIntegrationTest {
 	public void testAddNewFood() throws Exception {
 		this.testFoodWithID.setWine(this.testWineWithId);
 		String result = this.mock
-				.perform(request(HttpMethod.POST, "/food/addFood?id=" + this.id).contentType(MediaType.APPLICATION_JSON)
+				.perform(request(HttpMethod.POST, "/food/addFood?id=" + this.wineId).contentType(MediaType.APPLICATION_JSON)
 						.content(this.mapper.writeValueAsString(testFood)).accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
 		assertEquals(this.mapper.writeValueAsString(testFoodWithID), result);
