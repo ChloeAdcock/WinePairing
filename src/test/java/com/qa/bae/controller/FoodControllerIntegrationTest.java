@@ -67,6 +67,16 @@ public class FoodControllerIntegrationTest {
 	}
 	
 	@Test
+	public void testAddNewFood() throws Exception {
+
+		String result = this.mock
+				.perform(request(HttpMethod.POST, "/food/addFood?id=" + this.id).contentType(MediaType.APPLICATION_JSON)
+						.content(this.mapper.writeValueAsString(testFood)).accept(MediaType.APPLICATION_JSON))
+				.andExpect(status().isOk()).andReturn().getResponse().getContentAsString();
+		assertEquals(this.mapper.writeValueAsString(testFoodWithID), result);
+	}
+	
+	@Test
 	public void testDeleteFood() throws Exception {
 		this.mock.perform(request(HttpMethod.DELETE, "/food/deleteFood/" + this.id)).andExpect(status().isOk());
 	}

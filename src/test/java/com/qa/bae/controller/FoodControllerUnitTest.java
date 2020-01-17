@@ -20,6 +20,7 @@ import com.qa.bae.domain.Food;
 import com.qa.bae.domain.Wine;
 import com.qa.bae.service.FoodNotFoundException;
 import com.qa.bae.service.FoodService;
+import com.qa.bae.service.WineNotFoundException;
 
 @RunWith(SpringRunner.class)
 public class FoodControllerUnitTest {
@@ -51,8 +52,17 @@ public class FoodControllerUnitTest {
 				testFood.getDescription(), testFood.getLikes());
 		this.testWineWithId = new Wine(testWine.getName(), testWine.getGrape(), 
 				testWine.getDescription(), testWine.getTastingNotes(), testWine.getLikes());
-		this.testWineWithId.setId(id);
+		this.testWineWithId.setId(wineId);
 		this.testFoodWithId.setId(id);
+	}
+	
+	@Test
+	public void createFoodTest() throws WineNotFoundException {
+		when(this.service.addNewFood(testFood)).thenReturn(testFoodWithId);
+
+		assertEquals(this.testFoodWithId, this.controller.addNewFood(testFood, testWineWithId.getId()));
+
+		verify(this.service, times(1)).addNewFood(this.testFood);
 	}
 	
 	@Test
