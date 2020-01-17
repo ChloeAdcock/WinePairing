@@ -14,8 +14,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.qa.bae.pages.HomeWine;
-import com.qa.bae.pages.WinePage;
+import com.qa.bae.seleniumPages.HomeWine;
+import com.qa.bae.seleniumPages.WinePage;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
@@ -61,6 +61,8 @@ public class AddWine {
 		
 		WinePage winePage = PageFactory.initElements(driver, WinePage.class);
 		winePage.clickLike();
+		Thread.sleep(2000);
+		winePage.clickDelete();
 		Thread.sleep(2000);
 	}
 	

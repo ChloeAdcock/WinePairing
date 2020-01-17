@@ -1,4 +1,4 @@
-package com.qa.bae.pages;
+package com.qa.bae.seleniumPages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
