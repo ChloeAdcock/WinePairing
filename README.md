@@ -11,9 +11,6 @@
     * [API structure](#API)
 * [Technology](#technology)
 * [Testing](#testing)
-    * [Automated testing](#automated)
-    * [Surefire report](#surefire)
-    * [Static report](#static)
 * [Future improvements](#future)
 
 <a name="overview"></a>
@@ -44,6 +41,35 @@ I used Trello for project planning and tracking. The board includes wireframes, 
 ### Entity Relationship Diagram
 
 ![](https://raw.githubusercontent.com/ChloeAdcock/WinePairing/master/Documentation/ERD.png)
+
+<a name="API"></a>
+### API Structure
+
+![](https://raw.githubusercontent.com/ChloeAdcock/WinePairing/master/Documentation/API%20structure.png)
+
+<a name="technology"></a>
+## Technology
+
+* Kanban board - Trello
+* Database - H2
+* IDE - Eclipse and Visual Studio Code
+* Version control - GitHub
+* CI Server - Jenkins
+* Build tool - Maven
+* Automated testing - JUnit, Mockito and Selenium
+* Live and testing environment - Amazon Web Services
+
+![](https://raw.githubusercontent.com/ChloeAdcock/WinePairing/master/Documentation/CI%20Pipeline.png)
+
+<a name="testing"></a>
+## Testing
+
+JUnit and Mockito were used to test the back-end and Selenium to test the front-end.  
+A static report was generated using Sonarqube and a Surefire report was generated.
+
+
+
+
 
 
 
