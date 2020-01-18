@@ -33,8 +33,7 @@ public class FoodService {
 	}
 	
 	public Food findFoodByID(Long id) throws FoodNotFoundException {
-		return this.foodRepo.findById(id).orElseThrow(() 
-				-> new FoodNotFoundException());
+		return this.foodRepo.findById(id).orElseThrow(FoodNotFoundException::new);
 	}
 	
 	public Food updateFood(Long id) throws FoodNotFoundException {
