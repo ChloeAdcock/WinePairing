@@ -35,7 +35,7 @@ public class AddWine {
 	
 	public void waitLike() {
 		
-		new WebDriverWait(this.driver, 10L)
+		new WebDriverWait(this.driver, 15L)
 		.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/button[2]")));
 		
 	}
