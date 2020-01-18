@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 
 import com.qa.bae.domain.Wine;
 import com.qa.bae.repo.WineRepository;
-import com.qa.bae.service.FoodService;
 
 @Service
 public class WineService {
