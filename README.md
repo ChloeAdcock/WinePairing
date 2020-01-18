@@ -65,11 +65,20 @@ I used Trello for project planning and tracking. The board includes wireframes, 
 ## Testing
 
 JUnit and Mockito were used to test the back-end and Selenium to test the front-end.  
-A static report was generated using Sonarqube and a Surefire report was generated.
 
+A static report was generated using Sonarqube.    
+[Static report](https://github.com/ChloeAdcock/WinePairing/blob/master/Documentation/Static%20report.png)  
 
+A Surefire report was generated.    
+[Surefire report](https://github.com/ChloeAdcock/WinePairing/blob/master/Documentation/Surefire%20Report.pdf)
 
+Back-end test coverage
 
+![](https://raw.githubusercontent.com/ChloeAdcock/WinePairing/master/Documentation/Coverage.png)
 
+<a name="future"></a>
+## Future Improvements
 
-
+* Add a users table to develop login and signup features
+* Add entire menu to the database, including beers and gins
+* Develop an ordering feature
