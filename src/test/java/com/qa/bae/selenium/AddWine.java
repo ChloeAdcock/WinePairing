@@ -1,4 +1,4 @@
-package com.qa.bae.Selenium;
+package com.qa.bae.selenium;
 
 import java.util.concurrent.TimeUnit;
 

@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.el.stream.Stream;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -20,6 +19,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 
 import com.qa.bae.domain.Food;
 import com.qa.bae.domain.Wine;
+import com.qa.bae.repo.FoodRepository;
 import com.qa.bae.repo.WineRepository;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -33,6 +33,9 @@ public class WineServiceUnitTest {
 	
 	@Mock
 	private WineRepository repo;
+	
+	@Mock
+	private FoodRepository foodRepo;
 	
 	private List<Wine> wineList;
 	private List<Food> foodList;
@@ -77,6 +80,8 @@ public class WineServiceUnitTest {
 	
 	@Test
 	public void deleteWineTest() throws WineNotFoundException {
+		
+		testFoodWithId.setWine(testWine);
 		when(this.repo.existsById(id)).thenReturn(true, false);
 		when(this.foodService.getAllFood()).thenReturn(this.foodList);
 		this.service.deleteWine(id);
