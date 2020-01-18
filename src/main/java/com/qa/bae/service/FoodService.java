@@ -28,15 +28,14 @@ public class FoodService {
 	
 	public boolean deleteFood(Long id) throws FoodNotFoundException {
 		if (!this.foodRepo.existsById(id)) {
-			throw new FoodNotFoundException();
-		}
+			throw new FoodNotFoundException();}
 		this.foodRepo.deleteById(id);
 		return this.foodRepo.existsById(id);
 	}
 	
 	public Food findFoodByID(Long id) throws FoodNotFoundException {
-		return this.foodRepo.findById(id).orElseThrow(
-				() -> new FoodNotFoundException());
+		return this.foodRepo.findById(id).orElseThrow(() 
+				-> new FoodNotFoundException());
 	}
 	
 	public Food updateFood(Long id) throws FoodNotFoundException {

@@ -84,6 +84,19 @@ public class WineServiceUnitTest {
 		verify(this.repo, times(1)).deleteById(id);
 	}
 	
+	@Test(expected=WineNotFoundException.class)
+	public void deleteWineNotFound() throws WineNotFoundException {
+		when(this.repo.existsById(0L)).thenReturn(false);
+		
+		this.service.deleteWine(0L);
+	}
+	
+	@Test(expected=WineNotFoundException.class)
+	public void findWineNotFound() throws WineNotFoundException {
+		
+		this.service.findWineById(0L);
+	}
+	
 	@Test
 	public void getAllWineTest() {
 

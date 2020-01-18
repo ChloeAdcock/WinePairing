@@ -91,20 +91,6 @@ public class Food {
 	public void setWine(Wine wine) {
 		this.wine = wine;
 	}
-	
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((allergens == null) ? 0 : allergens.hashCode());
-		result = prime * result + ((description == null) ? 0 : description.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + likes;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result + ((wine == null) ? 0 : wine.hashCode());
-		return result;
-	}
 
 	@Override
 	public boolean equals(Object obj) {

@@ -65,6 +65,19 @@ public class FoodServiceUnitTest {
 		verify(this.repo, times(1)).deleteById(id);
 	}
 	
+	@Test(expected=FoodNotFoundException.class)
+	public void deleteFoodNotFound() throws FoodNotFoundException {
+		when(this.repo.existsById(0L)).thenReturn(false);
+		
+		this.service.deleteFood(0L);
+	}
+	
+	@Test(expected=FoodNotFoundException.class)
+	public void findFoodNotFound() throws FoodNotFoundException {
+		
+		this.service.findFoodByID(0L);
+	}
+	
 	@Test
 	public void getAllFoodTest() {
 

@@ -6,10 +6,15 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -34,15 +39,29 @@ public class AddFood {
 	private final String WINEDESCRIPTION = "Wine description";
 	private final String TASTINGNOTES = "Tasting notes";
 	
+	public void waitLike() {
+		
+		new WebDriverWait(this.driver, 10L)
+		.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/button[2]")));
+		
+	}
+	
+	public void waitDelete() {
+		
+		new WebDriverWait(this.driver, 10L)
+		.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/button[1]")));
+		
+	}
+	
 	@Before
 	public void setup() {
 		
 		System.setProperty("webdriver.chrome.driver", "chromedriver");
 		ChromeOptions options = new ChromeOptions();
+		options.setHeadless(true);
 		this.driver = new ChromeDriver(options);
-		this.driver.manage().window().maximize();
+		this.driver.manage().window().setSize(new Dimension(1600,700));
 		this.driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		
 	}
 	
 	@Test
@@ -51,34 +70,26 @@ public class AddFood {
 		this.driver.get("http://3.11.106.117:8181/WinePairing/index.html");
 		
 		HomeWine wineHomePage = PageFactory.initElements(driver, HomeWine.class);
-		wineHomePage.inputWineName(WINENAME);
-		Thread.sleep(500);		
+		wineHomePage.inputWineName(WINENAME);	
 		wineHomePage.inputWineGrape(GRAPE);
-		Thread.sleep(500);
 		wineHomePage.inputWineDescription(WINEDESCRIPTION);
-		Thread.sleep(500);
 		wineHomePage.inputTastingNotes(TASTINGNOTES);
-		Thread.sleep(500);
 		wineHomePage.clickAdd();
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		
 		HomeFood homePage = PageFactory.initElements(driver, HomeFood.class);
-		homePage.inputFoodName(FOODNAME);
-		Thread.sleep(500);		
+		homePage.inputFoodName(FOODNAME);	
 		homePage.inputAllergens(ALLERGENS);
-		Thread.sleep(500);
 		homePage.inputFoodDescription(FOODDESCRIPTION);
-		Thread.sleep(500);
 		homePage.clickAdd();
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		homePage.goToFoodPage();
-		Thread.sleep(2000);
 		
 		FoodPage foodPage = PageFactory.initElements(driver, FoodPage.class);
+		waitLike();
 		foodPage.clickLike();
-		Thread.sleep(2000);
+		waitDelete();
 		foodPage.clickDelete();
-		Thread.sleep(2000);
 	}
 	
 	@After

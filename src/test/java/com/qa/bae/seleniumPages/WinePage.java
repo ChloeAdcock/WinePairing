@@ -8,7 +8,7 @@ public class WinePage {
 	@FindBy(xpath="/html/body/div/div[3]/button[2]")
 	private WebElement likeWine;
 	
-	@FindBy(xpath="/html/body/div/div[3]/button[2]")
+	@FindBy(xpath="/html/body/div/div[3]/button[1]")
 	private WebElement deleteWine;
 	
 	public void clickLike() {
@@ -18,6 +18,4 @@ public class WinePage {
 	public void clickDelete() {
 		this.deleteWine.click();
 	}
-
-
 }
