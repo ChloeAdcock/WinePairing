@@ -43,5 +43,7 @@ I used Trello for project planning and tracking. The board includes wireframes, 
 <a name="ERD"></a>
 ### Entity Relationship Diagram
 
-![ERD image](/Documentation/ERD/)
+![](https://raw.githubusercontent.com/ChloeAdcock/WinePairing/master/Documentation/ERD.png)
+
+
 
