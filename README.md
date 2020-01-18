@@ -11,6 +11,7 @@
     * [API structure](#API)
 * [Technology](#technology)
 * [Testing](#testing)
+    * [Coverage](#coverage)
 * [Future improvements](#future)
 
 <a name="overview"></a>
@@ -72,7 +73,9 @@ A static report was generated using Sonarqube.
 A Surefire report was generated.    
 [Surefire report](https://github.com/ChloeAdcock/WinePairing/blob/master/Documentation/Surefire%20Report.pdf)
 
-Back-end test coverage
+
+<a name="coverage"></a>
+## Back-end Test Coverage
 
 ![](https://raw.githubusercontent.com/ChloeAdcock/WinePairing/master/Documentation/Coverage.png)
 
