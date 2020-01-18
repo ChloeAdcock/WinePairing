@@ -75,7 +75,7 @@ A Surefire report was generated.
 
 
 <a name="coverage"></a>
-## Back-end Test Coverage
+### Back-end Test Coverage
 
 ![](https://raw.githubusercontent.com/ChloeAdcock/WinePairing/master/Documentation/Coverage.png)
 
