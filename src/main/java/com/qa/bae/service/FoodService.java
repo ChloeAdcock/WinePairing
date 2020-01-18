@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.qa.bae.domain.Food;
-import com.qa.bae.domain.Wine;
 import com.qa.bae.repo.FoodRepository;
 
 @Service

@@ -131,5 +131,4 @@ public class Wine {
 		return "Wine [id=" + id + ", name=" + name + ", grape=" + grape + ", description=" + description
 				+ ", tastingNotes=" + tastingNotes + ", likes=" + likes + "]";
 	}
-
 }
