@@ -70,7 +70,7 @@ public class AddWine {
 		homePage.inputWineDescription(DESCRIPTION);
 		homePage.inputTastingNotes(TASTINGNOTES);
 		homePage.clickAdd();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		homePage.goToWinePage();
 		
 		WinePage winePage = PageFactory.initElements(driver, WinePage.class);

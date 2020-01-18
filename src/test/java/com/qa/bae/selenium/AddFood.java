@@ -9,7 +9,6 @@ import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
@@ -75,14 +74,14 @@ public class AddFood {
 		wineHomePage.inputWineDescription(WINEDESCRIPTION);
 		wineHomePage.inputTastingNotes(TASTINGNOTES);
 		wineHomePage.clickAdd();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		
 		HomeFood homePage = PageFactory.initElements(driver, HomeFood.class);
 		homePage.inputFoodName(FOODNAME);	
 		homePage.inputAllergens(ALLERGENS);
 		homePage.inputFoodDescription(FOODDESCRIPTION);
 		homePage.clickAdd();
-		Thread.sleep(1000);
+		Thread.sleep(2000);
 		homePage.goToFoodPage();
 		
 		FoodPage foodPage = PageFactory.initElements(driver, FoodPage.class);
