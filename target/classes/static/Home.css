@@ -1,0 +1,69 @@
+body {
+    padding-top: 56px;
+  }
+
+#navbar-colour {
+    background-color: black;
+}
+  
+  .bg-image-full {
+    background: no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+  }
+
+  .col {
+    margin: 70px;
+  }
+
+  h2 {
+    text-align: center;
+}
+
+#dropdown {
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  background-color: white;
+  color: #6c757d;
+  text-align: left;
+}
+
+#submitButton {
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  margin-top: 20px;
+}
+
+br {
+  line-height: 125%;
+}
+
+button {
+  width: 100%;
+}
+
+.required {
+  display: block;
+  width: 100%;
+  height: calc(1.5em + .75rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  background-clip: padding-box;
+  border: 1px solid red;
+  border-radius: .25rem;
+}
+
+.requiredText {
+  color: red;
+}
+
+.form-text {
+  color: #6c757d;
+}
+

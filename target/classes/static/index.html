@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <link rel="stylesheet" href="Home.css"/>
+        <title>Home Page</title>
+    </head>
+    <body>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id = "navbar-colour">
+        <div class="container">
+          <a class="navbar-brand" href="index.html">WINE PAIRING</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+              <li class="nav-item active">
+                <a class="nav-link" href="index.html">HOME
+                  <span class="sr-only">(current)</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Food.html">FOOD</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Wine.html">WINE</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="Search.html">SEARCH</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <header class="py-5 bg-image-full" style="background-image: url('https://images.pexels.com/photos/2537608/pexels-photo-2537608.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
+        <div style="height: 200px;"></div>
+      </header>
+      <section class="py-5">
+        <div class="container">
+          <h1>Home</h1>
+          <p class="lead">Scroll down to add a new wine or meal.</p>
+        </div>
+      </section>
+      <section class="py-5 bg-image-full" style="background-image: url('https://images.pexels.com/photos/2537608/pexels-photo-2537608.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');">
+        <div style="height: 200px;"></div>
+      </section>
+      <div class="row">
+        <div class="col">
+          <h2>Add New Wine</h2>
+          <form name="wineForm">
+            <div class="form-group">
+              <label for="wineName">Wine name</label>
+              <input type="text" class="form-control" id="inputWineName" aria-describedby="wineName" placeholder="Enter wine name">
+              <small id="wineNameHelp" class="form-text">Maximum 100 characters</small>
+            </div>
+            <div class="form-group">
+              <label for="grape">Grape</label>
+              <input type="text" class="form-control" id="inputGrape" placeholder="Enter grape">
+              <small id="grapeHelp" class="form-text">Maximum 100 characters</small>
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input type="text" class="form-control" id="inputWineDescription" placeholder="Enter description">
+              <small id="wineDescriptionHelp" class="form-text">Maximum 100 characters</small>
+            </div>
+            <div class="form-group">
+              <label for="tastingNotes">Tasting notes</label>
+              <input type="type" class="form-control" id="inputTastingNotes" placeholder="Enter tasting notes">
+              <small id="tastingNotesHelp" class="form-text">Maximum 100 characters</small>
+            </div>
+            <button type="button" class="btn btn-light btn-block" id = "submitWine" onclick="addWine();">Add wine</button>
+          </form>
+        </div>
+        <div class="col">
+          <h2>Add New Meal</h2>
+          <form>
+            <div class="form-group">
+              <label for="foodName">Name</label>
+              <input type="text" class="form-control" id="inputFoodName" aria-describedby="foodName" placeholder="Enter name">
+              <small id="foodNameHelp" class="form-text">Maximum 100 characters</small>
+            </div>
+            <div class="form-group">
+              <label for="allergens">Allergens</label>
+              <input type="text" class="form-control" id="inputAllergens" placeholder="Enter allergens">
+              <small id="allergensHelp" class="form-text">Maximum 100 characters</small>
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input type="text" class="form-control" id="inputFoodDescription" placeholder="Enter description">
+              <small id="foodDescriptionHelp" class="form-text">Maximum 100 characters</small>
+            </div>
+            <div class="form-group">
+              <label for="winePairing">Wine pairing</label>
+              <br>
+              <div class="dropdown">
+               <select class="form-control" id="wineDropdown" onload="getWines()"></select>
+              </div>
+              <br id="break"></br>
+            <button type="button" class="btn btn-light btn-block" id = "submitFood" onclick="addFood()">Add meal</button>
+          </form>
+      </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js"></script>
+        <script src ="Home.js"></script>
+        <script>getWines()</script>
+        <script>showWineNames()</script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </body>
+</html>

@@ -1,0 +1,75 @@
+body {
+  padding-top: 56px;
+}
+
+#navbar-colour {
+  background-color: black;
+}
+
+.bg-image-full {
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+#search_bar {
+  width: 30%;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.card {
+  background-color: white;
+  border-color: black;
+  border-width: medium;
+}
+
+.card-details {
+  color: #495057;
+}
+
+.cardVariables {
+  color: black;
+  font-weight: thick;
+}
+
+.card-title {
+  color: black;
+  font-weight: thick;
+}
+
+#button {
+  float: right;
+}
+
+#num {
+  text-align: right;
+}
+
+.column {
+  float: left;
+  width: 33.33%;
+}
+
+.w-30 {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 31%;
+  flex: 0 0 31%;
+  max-width: 31%;
+}
+
+.card-title {
+  font-size: 30px;
+}
+
+.numLikes {
+  text-align: center;
+}
+
+#variableName {
+  color: black;
+  font-size: 20px;
+}
