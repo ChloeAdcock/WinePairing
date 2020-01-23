@@ -4,7 +4,7 @@ COPY . /build
 
 WORKDIR /build
 
-RUN mvn clean package
+RUN mvn clean package -DskipTests
 
 FROM java:8
 
