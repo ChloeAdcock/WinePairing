@@ -16,6 +16,19 @@
 	<description>Wine Pairing Application</description>
 	<packaging>jar</packaging>
 
+     <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <name>maven-releases</name>
+            <url>http://localhost:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <name>maven-snapshots</name>
+            <url>http://localhost:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -63,7 +76,6 @@
 	</dependencies>
 
 	<build>
-		<finalName>${project.artifactId}</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
@@ -89,7 +101,7 @@
 					</execution>
 				</executions>
 			</plugin>
+
 		</plugins>
 	</build>
-
 </project>

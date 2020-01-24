@@ -1,0 +1,11 @@
+/home/ubuntu/WinePairing/src/main/java/com/qa/bae/WinePairingApplication.java
+/home/ubuntu/WinePairing/src/main/java/com/qa/bae/service/FoodService.java
+/home/ubuntu/WinePairing/src/main/java/com/qa/bae/repo/FoodRepository.java
+/home/ubuntu/WinePairing/src/main/java/com/qa/bae/repo/WineRepository.java
+/home/ubuntu/WinePairing/src/main/java/com/qa/bae/service/WineNotFoundException.java
+/home/ubuntu/WinePairing/src/main/java/com/qa/bae/domain/Wine.java
+/home/ubuntu/WinePairing/src/main/java/com/qa/bae/domain/Food.java
+/home/ubuntu/WinePairing/src/main/java/com/qa/bae/service/FoodNotFoundException.java
+/home/ubuntu/WinePairing/src/main/java/com/qa/bae/controller/WineController.java
+/home/ubuntu/WinePairing/src/main/java/com/qa/bae/controller/FoodController.java
+/home/ubuntu/WinePairing/src/main/java/com/qa/bae/service/WineService.java

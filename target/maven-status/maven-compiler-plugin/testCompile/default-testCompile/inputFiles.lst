@@ -1,0 +1,16 @@
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/service/WineServiceIntegrationTest.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/domain/WineDomainTest.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/controller/FoodControllerIntegrationTest.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/domain/FoodDomainTest.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/controller/WineControllerIntegrationTest.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/controller/FoodControllerUnitTest.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/seleniumPages/HomeWine.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/seleniumPages/HomeFood.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/seleniumPages/WinePage.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/service/WineServiceUnitTest.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/selenium/AddWine.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/controller/WineControllerUnitTest.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/seleniumPages/FoodPage.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/selenium/AddFood.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/service/FoodServiceIntergrationTest.java
+/home/ubuntu/WinePairing/src/test/java/com/qa/bae/service/FoodServiceUnitTest.java

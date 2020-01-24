@@ -1,0 +1,16 @@
+com/qa/bae/controller/FoodControllerIntegrationTest.class
+com/qa/bae/service/FoodServiceUnitTest.class
+com/qa/bae/seleniumPages/FoodPage.class
+com/qa/bae/service/WineServiceIntegrationTest.class
+com/qa/bae/service/FoodServiceIntergrationTest.class
+com/qa/bae/domain/WineDomainTest.class
+com/qa/bae/selenium/AddWine.class
+com/qa/bae/controller/WineControllerIntegrationTest.class
+com/qa/bae/seleniumPages/HomeWine.class
+com/qa/bae/seleniumPages/WinePage.class
+com/qa/bae/seleniumPages/HomeFood.class
+com/qa/bae/selenium/AddFood.class
+com/qa/bae/domain/FoodDomainTest.class
+com/qa/bae/service/WineServiceUnitTest.class
+com/qa/bae/controller/FoodControllerUnitTest.class
+com/qa/bae/controller/WineControllerUnitTest.class

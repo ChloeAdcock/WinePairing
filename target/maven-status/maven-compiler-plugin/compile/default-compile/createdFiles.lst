@@ -1,0 +1,11 @@
+com/qa/bae/service/WineService.class
+com/qa/bae/WinePairingApplication.class
+com/qa/bae/service/WineNotFoundException.class
+com/qa/bae/domain/Wine.class
+com/qa/bae/service/FoodService.class
+com/qa/bae/repo/FoodRepository.class
+com/qa/bae/service/FoodNotFoundException.class
+com/qa/bae/controller/WineController.class
+com/qa/bae/repo/WineRepository.class
+com/qa/bae/domain/Food.class
+com/qa/bae/controller/FoodController.class
