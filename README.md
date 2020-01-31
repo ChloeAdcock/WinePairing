@@ -88,8 +88,40 @@ A Surefire report was generated.
 <a name="guide"></a>
 ### Guide
 
+1. Create RDS database
+    * Use latest version of MySQL
+    * Enable authentication with password and IAM role
+2. Create EC2 instance for back-end
+    * Assign instance an IAM role with RDS full access
+3. SSH into the virtual machine
+    * Create install.sh, delete.sh and docker.sh scripts
+    * Run install.sh
+    * Exit then login again
+    * Access the RDS database using: mysql -h RDS endpoint -P 3306 -u admin -p
+    * Create the database in the MySQL console: CREATE DATABASE wine_pairing_db;
+    * Exit the MySql console using exit
+    * Change the datasource URL in application.properties to the RDS endpoint
+    * Run docker.sh
+4. Create snapshot of the back-end instance
+5. Create an AMI of the snapshot
+6. Create a launch configuration from the back-end AMI
+7. Create an auto-scaling group from the launch configuration
+    * Set the initial number of instances 
+    * Set the minimum number of instances to 1 and the maximum to 2
+    * Set the target CPU utilisation to 50 with 120 seconds to warm up after scaling
+    * Disable scale-in
+8. Create a target group for the back-end auto-scaling group
+    * Set the HTTP protocol to port 9090
+9. Create a load-balancer for the back-end instances
+    * Set the listener to port 9090
+    * Select all availability zones
+    * Select the default security group which allows TCP access from anywhere
+10. Edit the back-end auto-scaling group so that the target group is the back-end target group
+
 <a name="cloudstructure"></a>
 ### Cloud Structure
+
+![](https://raw.githubusercontent.com/ChloeAdcock/WinePairing/master/Documentation/Architecture.jpg)
 
 <a name="future"></a>
 ## Future Improvements
