@@ -120,7 +120,7 @@ A Surefire report was generated.
 10. Edit the back-end auto-scaling group so that the target group is the back-end target group
 11. Create an Ubuntu EC2 instance for front-end
 12. SSH into the virtual machine
-    * Create installfe.sh, deletefe.sh and dockerfe.sh scripts
+    * Create [installfe.sh](https://github.com/ChloeAdcock/WinePairingFE/blob/master/Scripts/installfe.sh), [deletefe.sh](https://github.com/ChloeAdcock/WinePairingFE/blob/master/Scripts/deletefe.sh) and [dockerfe.sh](https://github.com/ChloeAdcock/WinePairingFE/blob/master/Scripts/dockerfe.sh) scripts
     * Make the scripts executable: chmod 700 installfe.sh deletefe.sh dockerfe.sh
     * Run installfe.sh
     * Exit then login again
