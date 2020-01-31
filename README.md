@@ -91,15 +91,16 @@ A Surefire report was generated.
 1. Create RDS database
     * Use latest version of MySQL
     * Enable authentication with password and IAM role
-2. Create EC2 instance for back-end
+2. Create an Ubuntu EC2 instance for back-end
     * Assign instance an IAM role with RDS full access
 3. SSH into the virtual machine
     * Create install.sh, delete.sh and docker.sh scripts
+    * Make the scripts executable: chmod 700 install.sh delete.sh docker.sh
     * Run install.sh
     * Exit then login again
-    * Access the RDS database using: mysql -h RDS endpoint -P 3306 -u admin -p
+    * Access the RDS database: mysql -h RDS endpoint -P 3306 -u admin -p
     * Create the database in the MySQL console: CREATE DATABASE wine_pairing_db;
-    * Exit the MySql console using exit
+    * Exit the MySql console: exit
     * Change the datasource URL in application.properties to the RDS endpoint
     * Run docker.sh
 4. Create snapshot of the back-end instance
