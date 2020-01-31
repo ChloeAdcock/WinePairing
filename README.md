@@ -12,6 +12,9 @@
 * [Technology](#technology)
 * [Testing](#testing)
     * [Coverage](#coverage)
+* [Cloud-based Architecture](#cloud)
+    * [Guide](#guide)
+    * [Cloud Structure](#cloudstructure)
 * [Future improvements](#future)
 
 <a name="overview"></a>
@@ -78,6 +81,15 @@ A Surefire report was generated.
 ### Back-end Test Coverage
 
 ![](https://raw.githubusercontent.com/ChloeAdcock/WinePairing/master/Documentation/Coverage.png)
+
+<a name="cloud"></a>
+## Cloud-Based Architecture 
+
+<a name="guide"></a>
+### Guide
+
+<a name="cloudstructure"></a>
+### Cloud Structure
 
 <a name="future"></a>
 ## Future Improvements
