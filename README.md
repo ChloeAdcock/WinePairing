@@ -94,7 +94,7 @@ A Surefire report was generated.
 2. Create an Ubuntu EC2 instance for back-end
     * Assign instance an IAM role with RDS full access
 3. SSH into the virtual machine
-    * Create install.sh, delete.sh and docker.sh scripts
+    * Create [install.sh](https://github.com/ChloeAdcock/WinePairing/blob/Containerised/Scripts/install.sh), [delete.sh](https://github.com/ChloeAdcock/WinePairing/blob/Containerised/Scripts/delete.sh) and [docker.sh](https://github.com/ChloeAdcock/WinePairing/blob/Containerised/Scripts/docker.sh) scripts
     * Make the scripts executable: chmod 700 install.sh delete.sh docker.sh
     * Run install.sh
     * Exit then login again
