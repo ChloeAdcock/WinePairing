@@ -98,7 +98,7 @@ A Surefire report was generated.
     * Make the scripts executable: chmod 700 install.sh delete.sh docker.sh
     * Run install.sh
     * Exit then login again
-    * Access the RDS database: mysql -h RDS endpoint -P 3306 -u admin -p
+    * Access the RDS database: mysql -h *RDS endpoint* -P 3306 -u admin -p
     * Create the database in the MySQL console: CREATE DATABASE wine_pairing_db;
     * Exit the MySql console: exit
     * Change the datasource URL in application.properties to the RDS endpoint
