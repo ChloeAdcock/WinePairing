@@ -104,10 +104,10 @@ A Surefire report was generated.
     * Change the datasource URL in application.properties to the RDS endpoint
     * Run docker.sh
 4. Create snapshot of the back-end instance
-5. Create an AMI of the snapshot
+5. Create an AMI of the back-end snapshot
 6. Create a launch configuration from the back-end AMI
-7. Create an auto-scaling group from the launch configuration
-    * Set the initial number of instances 
+7. Create an auto-scaling group from the back-end launch configuration
+    * Set the initial number of instances to 1
     * Set the minimum number of instances to 1 and the maximum to 2
     * Set the target CPU utilisation to 50 with 120 seconds to warm up after scaling
     * Disable scale-in
@@ -118,6 +118,29 @@ A Surefire report was generated.
     * Select all availability zones
     * Select the default security group which allows TCP access from anywhere
 10. Edit the back-end auto-scaling group so that the target group is the back-end target group
+11. Create an Ubuntu EC2 instance for front-end
+12. SSH into the virtual machine
+    * Create installfe.sh, deletefe.sh and dockerfe.sh scripts
+    * Make the scripts executable: chmod 700 installfe.sh deletefe.sh dockerfe.sh
+    * Run installfe.sh
+    * Exit then login again
+    * Change proxy_pass URL in nginx.conf to the DNS name of the back-end load balancer
+    * Run dockerfe.sh
+13. Create snapshot of the front-end instance
+14. Create an AMI of the front-end snapshot
+15. Create a launch configuration from the front-end AMI
+16. Create an auto-scaling group from the front-end launch configuration
+    * Set the initial number of instances to 1
+    * Set the minimum number of instances to 1 and the maximum to 2
+    * Set the target CPU utilisation to 50 with 120 seconds to warm up after scaling
+    * Disable scale-in
+17. Create a target group for the front-end auto-scaling group
+    * Set the HTTP protocol to port 80
+18. Create a load-balancer for the front-end instances
+    * Set the listener to port 80
+    * Select all availability zones
+    * Select the default security group which allows TCP access from anywhere
+19. Edit the front-end auto-scaling group so that the target group is the front-end target group
 
 <a name="cloudstructure"></a>
 ### Cloud Structure
