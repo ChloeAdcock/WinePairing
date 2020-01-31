@@ -12,9 +12,6 @@
 * [Technology](#technology)
 * [Testing](#testing)
     * [Coverage](#coverage)
-* [Cloud-based Architecture](#cloud)
-    * [Guide](#guide)
-    * [Cloud Structure](#cloudstructure)
 * [Future improvements](#future)
 
 <a name="overview"></a>
@@ -81,71 +78,6 @@ A Surefire report was generated.
 ### Back-end Test Coverage
 
 ![](https://raw.githubusercontent.com/ChloeAdcock/WinePairing/master/Documentation/Coverage.png)
-
-<a name="cloud"></a>
-## Cloud-Based Architecture 
-
-<a name="guide"></a>
-### Guide
-
-1. Create RDS database
-    * Use latest version of MySQL
-    * Enable authentication with password and IAM role
-2. Create an Ubuntu EC2 instance for back-end
-    * Assign instance an IAM role with RDS full access
-3. SSH into the virtual machine
-    * Create [install.sh](https://github.com/ChloeAdcock/WinePairing/blob/Containerised/Scripts/install.sh), [delete.sh](https://github.com/ChloeAdcock/WinePairing/blob/Containerised/Scripts/delete.sh) and [docker.sh](https://github.com/ChloeAdcock/WinePairing/blob/Containerised/Scripts/docker.sh) scripts
-    * Make the scripts executable: chmod 700 install.sh delete.sh docker.sh
-    * Run install.sh
-    * Exit then login again
-    * Access the RDS database: mysql -h *RDS endpoint* -P 3306 -u admin -p
-    * Create the database in the MySQL console: CREATE DATABASE wine_pairing_db;
-    * Exit the MySql console: exit
-    * Change the datasource URL in application.properties to the RDS endpoint
-    * Run docker.sh
-4. Create snapshot of the back-end instance
-5. Create an AMI of the back-end snapshot
-6. Create a launch configuration from the back-end AMI
-7. Create an auto-scaling group from the back-end launch configuration
-    * Set the initial number of instances to 1
-    * Set the minimum number of instances to 1 and the maximum to 2
-    * Set the target CPU utilisation to 50 with 120 seconds to warm up after scaling
-    * Disable scale-in
-8. Create a target group for the back-end auto-scaling group
-    * Set the HTTP protocol to port 9090
-9. Create a load-balancer for the back-end instances
-    * Set the listener to port 9090
-    * Select all availability zones
-    * Select the default security group which allows TCP access from anywhere
-10. Edit the back-end auto-scaling group so that the target group is the back-end target group
-11. Create an Ubuntu EC2 instance for front-end
-12. SSH into the virtual machine
-    * Create [installfe.sh](https://github.com/ChloeAdcock/WinePairingFE/blob/master/Scripts/installfe.sh), [deletefe.sh](https://github.com/ChloeAdcock/WinePairingFE/blob/master/Scripts/deletefe.sh) and [dockerfe.sh](https://github.com/ChloeAdcock/WinePairingFE/blob/master/Scripts/dockerfe.sh) scripts
-    * Make the scripts executable: chmod 700 installfe.sh deletefe.sh dockerfe.sh
-    * Run installfe.sh
-    * Exit then login again
-    * Change proxy_pass URL in nginx.conf to the DNS name of the back-end load balancer
-    * Run dockerfe.sh
-13. Create snapshot of the front-end instance
-14. Create an AMI of the front-end snapshot
-15. Create a launch configuration from the front-end AMI
-16. Create an auto-scaling group from the front-end launch configuration
-    * Set the initial number of instances to 1
-    * Set the minimum number of instances to 1 and the maximum to 2
-    * Set the target CPU utilisation to 50 with 120 seconds to warm up after scaling
-    * Disable scale-in
-17. Create a target group for the front-end auto-scaling group
-    * Set the HTTP protocol to port 80
-18. Create a load-balancer for the front-end instances
-    * Set the listener to port 80
-    * Select all availability zones
-    * Select the default security group which allows TCP access from anywhere
-19. Edit the front-end auto-scaling group so that the target group is the front-end target group
-
-<a name="cloudstructure"></a>
-### Cloud Structure
-
-![](https://raw.githubusercontent.com/ChloeAdcock/WinePairing/master/Documentation/Architecture.jpg)
 
 <a name="future"></a>
 ## Future Improvements
