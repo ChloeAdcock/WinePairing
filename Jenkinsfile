@@ -7,10 +7,9 @@ pipeline {
 
    stages {
       stage('Build') {
-         steps {
-            git 'https://github.com/ChloeAdcock/WinePairing.git'
-
-            sh "mvn clean install"
+         steps 
+         
+            sh "mvn clean package"
          }
 
          post {
