@@ -14,9 +14,8 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>WinePairing</name>
 	<description>Wine Pairing Application</description>
-	<packaging>jar</packaging>
 
-    <!-- <distributionManagement>
+	<!-- <distributionManagement>
         <repository>
             <id>nexus</id>
             <name>maven-releases</name>
