@@ -1,22 +1,20 @@
 pipeline {
    agent any
-
-   tools {
-      maven 'maven'
-   }
-
    stages {
-      stage('Build') {
-         steps {
-         
-            sh "mvn clean package"
-         }
-
-         post {
-            success {
-               archiveArtifacts 'target/*.jar'
-            }
-         }
-      }
+       stage('---clean---') {
+           steps {
+               sh "mvn clean"
+           }
+       }
+       stage('--test--') {
+           steps {
+               sh "mvn test"
+           }
+       }
+       stage('--package--') {
+           steps {
+               sh "mvn package"
+           }
+       }
    }
 }
