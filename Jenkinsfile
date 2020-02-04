@@ -6,21 +6,15 @@ pipeline {
    }
 
    stages {
-      stage('Build') {
+      stage('Build and deploy') {
          steps {
 
-            sh "mvn clean package"
+            sh "mvn clean deploy"
          }
          post {
             success {
                archiveArtifacts 'target/*.jar'
             }
-         }
-       stage('Deploy') {
-         steps {
-
-            sh "mvn clean deploy"
-         }
          }
       }
    }
