@@ -16,7 +16,7 @@
 	<description>Wine Pairing Application</description>
 	<packaging>jar</packaging>
 
-     <distributionManagement>
+    <!-- <distributionManagement>
         <repository>
             <id>nexus</id>
             <name>maven-releases</name>
@@ -27,7 +27,7 @@
             <name>maven-snapshots</name>
             <url>http://localhost:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
-    </distributionManagement>
+    </distributionManagement> -->
 
 	<dependencies>
 		<dependency>
