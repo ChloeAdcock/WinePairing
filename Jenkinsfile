@@ -15,7 +15,7 @@ pipeline {
 
          post {
             success {
-               archiveArtifacts '/var/jenkins_home/workspace/back-end-dev/target/WinePairing/*.war'
+               archiveArtifacts '/target/*.war'
             }
          }
       }
