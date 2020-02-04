@@ -102,5 +102,6 @@
 			</plugin>
 
 		</plugins>
+		<finalName>WinePairing</finalName>
 	</build>
 </project>
