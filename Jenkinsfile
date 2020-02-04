@@ -11,11 +11,12 @@ pipeline {
             git 'https://github.com/ChloeAdcock/WinePairing.git'
 
             sh "mvn clean package"
+            sh "mvn clean deploy"
          }
 
          post {
             success {
-               archiveArtifacts 'target/*.jar'
+               archiveArtifacts 'build/target/*.jar'
             }
          }
       }
