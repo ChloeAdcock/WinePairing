@@ -21,6 +21,7 @@ pipeline {
 
             sh "mvn clean deploy"
          }
+         }
       }
    }
 }
