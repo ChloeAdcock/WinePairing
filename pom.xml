@@ -15,18 +15,13 @@
 	<name>WinePairing</name>
 	<description>Wine Pairing Application</description>
 
-	<!-- <distributionManagement>
-        <repository>
-            <id>nexus</id>
-            <name>maven-releases</name>
-            <url>http://localhost:8081/repository/maven-releases/</url>
-        </repository>
+     <distributionManagement>
         <snapshotRepository>
             <id>nexus</id>
-            <name>maven-snapshots</name>
-            <url>http://localhost:8081/repository/maven-snapshots/</url>
+            <name>wine-hosted</name>
+            <url>http://3.11.84.155:8081/repository/wine-hosted/</url>
         </snapshotRepository>
-    </distributionManagement> -->
+    </distributionManagement>
 
 	<dependencies>
 		<dependency>
