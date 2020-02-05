@@ -19,7 +19,7 @@ pipeline {
           }
           stage('Run BE in docker') {
                 steps {
-                     sh 'ssh -i "Access-Key.pem" ubuntu@ec2-35-177-230-135.eu-west-2.compute.amazonaws.com'
+                     sh 'ssh -tt -o StrictHostKeyChecking no -i "Access-Key.pem" ubuntu@ec2-35-177-230-135.eu-west-2.compute.amazonaws.com'
                      sh 'docker stop $(docker ps -a -q)'
                      sh 'docker rm $(docker ps -a -q)'
                      sh 'docker rmi wines'
