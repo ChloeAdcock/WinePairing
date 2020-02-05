@@ -25,7 +25,7 @@ pipeline {
           stage('Run FE in docker') {
                 steps {
                      sh 'echo $USER'
-                     sh 'sudo ssh -tt -i "Access-Key.pem" ubuntu@ec2-35-177-223-218.eu-west-2.compute.amazonaws.com "./installfe.sh; ./dockerfe.sh"'
+                     sh 'ssh -t -i "Access-Key.pem" ubuntu@ec2-35-177-223-218.eu-west-2.compute.amazonaws.com "./installfe.sh; ./dockerfe.sh"'
                 }
           }
      }
