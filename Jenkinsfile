@@ -19,6 +19,7 @@ pipeline {
           }
           stage('Run BE in docker') {
                 steps {
+                     sh 'echo myPassword | su ubuntu'
                      sh 'ssh -i "Access-Key.pem" ubuntu@ec2-35-177-230-135.eu-west-2.compute.amazonaws.com'
                      sh 'docker stop $(docker ps -a -q)'
                      sh 'docker rm $(docker ps -a -q)'
@@ -28,6 +29,7 @@ pipeline {
                      sh 'docker build -t wine-app .'
                      sh 'docker run -dit --restart unless-stopped -d -p 9090:8081 --name wine-app wines:latest'
                      sh 'exit'
+                     sh 'echo myPassword | su jenkins'
                 }
           }
      }
