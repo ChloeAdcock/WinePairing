@@ -8,7 +8,7 @@ pipeline {
    stages {
           stage('Build and deploy BE') {
                 steps {
-                     git branch: 'deployable-dev', url: 'https://github.com/ChloeAdcock/WinePairing.git'
+                     git branch: 'deployable-master', url: 'https://github.com/ChloeAdcock/WinePairing.git'
                      sh "mvn clean deploy"
                 }
                 post {
