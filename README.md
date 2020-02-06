@@ -114,7 +114,7 @@ A Surefire report was generated.
 <a name="pipelinestructure"></a>
 ### Pipeline Structure
 
-![](https://raw.githubusercontent.com/ChloeAdcock/WinePairing/master/Documentation/Architecture.jpg)
+![](https://raw.githubusercontent.com/ChloeAdcock/WinePairing/deployable-dev/Documentation/CI.jpg)
 
 <a name="future"></a>
 ## Future Improvements
