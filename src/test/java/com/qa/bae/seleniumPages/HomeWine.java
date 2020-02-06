@@ -19,11 +19,7 @@ public class HomeWine {
 	
 	@FindBy(xpath="/html/body/div/div[1]/form/button")
 	private WebElement addWine;
-	
-	@FindBy(xpath="/html/body/nav/div/div/ul/li[3]/a")
-	private WebElement gotToWine;
 
-	
 	public void inputWineName(String input) {
 		this.wineName.sendKeys(input);
 	}
@@ -42,9 +38,5 @@ public class HomeWine {
 	
 	public void clickAdd() {
 		this.addWine.click();
-	}
-	
-	public void goToWinePage() {
-		this.gotToWine.click();
 	}
 }
