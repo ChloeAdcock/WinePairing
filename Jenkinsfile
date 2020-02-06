@@ -19,7 +19,7 @@ pipeline {
           }
           stage('Run BE in docker') {
                 steps   {
-                     sh 'ssh -t -i "Access-Key.pem" ubuntu@ec2-3-10-139-165.eu-west-2.compute.amazonaws.com "./docker.sh"'
+                     sh 'ssh -t -i "Access-Key.pem" ubuntu@ec2-35-176-178-52.eu-west-2.compute.amazonaws.com "./docker.sh"'
                 }
           }
           stage('Run FE in docker') {
