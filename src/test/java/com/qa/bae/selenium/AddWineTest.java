@@ -5,7 +5,6 @@ import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
@@ -14,16 +13,11 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import com.qa.bae.seleniumPages.HomeWine;
 import com.qa.bae.seleniumPages.WinePage;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
-public class AddWine {
+public class AddWineTest {
 	
 	private WebDriver driver;
 	
@@ -32,20 +26,6 @@ public class AddWine {
 	private final String GRAPE = "Grape";
 	private final String DESCRIPTION = "Wine description";
 	private final String TASTINGNOTES = "Tasting notes";
-	
-	public void waitLike() {
-		
-		new WebDriverWait(this.driver, 15L)
-		.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/button[2]")));
-		
-	}
-	
-	public void waitDelete() {
-		
-		new WebDriverWait(this.driver, 10L)
-		.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div/div/button[1]")));
-		
-	}
 	
 	@Before
 	public void setup() {
@@ -62,7 +42,7 @@ public class AddWine {
 	@Test
 	public void test() throws InterruptedException {
 		
-		this.driver.get("http://3.11.106.117:8181/WinePairing/index.html");
+		this.driver.get("http://3.10.21.253");
 		
 		HomeWine homePage = PageFactory.initElements(driver, HomeWine.class);
 		homePage.inputWineName(NAME);		
@@ -70,14 +50,6 @@ public class AddWine {
 		homePage.inputWineDescription(DESCRIPTION);
 		homePage.inputTastingNotes(TASTINGNOTES);
 		homePage.clickAdd();
-		Thread.sleep(2000);
-		homePage.goToWinePage();
-		
-		WinePage winePage = PageFactory.initElements(driver, WinePage.class);
-		waitLike();
-		winePage.clickLike();
-		waitDelete();
-		winePage.clickDelete();
 	}
 	
 	@After
