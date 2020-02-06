@@ -19,7 +19,6 @@ pipeline {
           }
           stage('Run BE in docker') {
                 steps   {
-                     sh 'pwd'
                      sh 'ssh -t -i "Access-Key.pem" ubuntu@ec2-35-176-178-52.eu-west-2.compute.amazonaws.com "./docker.sh"'
                 }
           }
