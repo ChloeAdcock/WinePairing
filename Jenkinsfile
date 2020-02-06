@@ -27,11 +27,6 @@ pipeline {
                      sh 'ssh -t -i "Access-Key.pem" ubuntu@ec2-3-10-21-253.eu-west-2.compute.amazonaws.com "./dockerfe.sh"'
                 }
           }
-          stage('Run selenium') {
-               steps {
-                     sh 'ssh -t -i "Access-Key.pem" ubuntu@ec2-3-10-21-253.eu-west-2.compute.amazonaws.com "./selenium.sh"'
-               }
-          }
      }
 }
 
