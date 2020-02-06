@@ -104,3 +104,4 @@ erl_crash.dump
 /.bundle/
 /vendor/bundle
 /lib/bundler/man/
+/target/
