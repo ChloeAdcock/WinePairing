@@ -41,7 +41,7 @@ public class AddWineTest {
 	@Test
 	public void test() throws InterruptedException {
 		
-		this.driver.get("http://3.10.21.253");
+		this.driver.get("http://localhost:80");
 		
 		HomeWine homePage = PageFactory.initElements(driver, HomeWine.class);
 		homePage.inputWineName(NAME);		
