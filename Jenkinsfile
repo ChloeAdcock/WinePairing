@@ -11,11 +11,6 @@ pipeline {
                      git branch: 'deployable-dev', url: 'https://github.com/ChloeAdcock/WinePairing.git'
                      sh "mvn clean deploy"
                 }
-                post {
-                      success {
-                      archiveArtifacts 'target/*.jar'
-                     }
-                }
           }
           stage('Run BE in docker') {
                 steps   {
