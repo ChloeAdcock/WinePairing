@@ -19,12 +19,12 @@ pipeline {
           }
           stage('Run BE in docker') {
                 steps   {
-                     sh 'ssh -t -i "Access-Key.pem" ec2-user@ec2-52-56-106-97.eu-west-2.compute.amazonaws.com "./docker.sh"'
+                     sh 'ssh -t -i "Access-Key.pem" ubuntu@ec2-52-56-106-97.eu-west-2.compute.amazonaws.com "./docker.sh"'
                 }
           }
           stage('Run FE in docker') {
                 steps {
-                     sh 'ssh -t -i "Access-Key.pem" ec2-user@ec2-35-178-199-56.eu-west-2.compute.amazonaws.com "./dockerfe.sh"'
+                     sh 'ssh -t -i "Access-Key.pem" ubuntu@ec2-35-178-199-56.eu-west-2.compute.amazonaws.com "./dockerfe.sh"'
                 }
           }
      }
