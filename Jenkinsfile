@@ -19,17 +19,17 @@ pipeline {
           }
           stage('Run BE in docker') {
                 steps   {
-                     sh 'ssh -t -i "Access-Key.pem" ubuntu@ec2-35-176-178-52.eu-west-2.compute.amazonaws.com "./docker.sh"'
+                     sh 'ssh -t -i "Access-Key.pem" ubuntu@ec2-18-130-226-251.eu-west-2.compute.amazonaws.com "./docker.sh"'
                 }
           }
           stage('Run FE in docker') {
                 steps {
-                     sh 'ssh -t -i "Access-Key.pem" ubuntu@ec2-3-10-21-253.eu-west-2.compute.amazonaws.com "./dockerfe.sh"'
+                     sh 'ssh -t -i "Access-Key.pem" ubuntu@ec2-3-9-164-172.eu-west-2.compute.amazonaws.com "./dockerfe.sh"'
                 }
           }
           stage('Run selenium') {
                steps {
-                     sh 'ssh -t -i "Access-Key.pem" ubuntu@ec2-3-10-21-253.eu-west-2.compute.amazonaws.com "./selenium.sh"'
+                     sh 'ssh -t -i "Access-Key.pem" ubuntu@ec2-3-9-164-172.eu-west-2.compute.amazonaws.com "./selenium.sh"'
                }
           }
      }
